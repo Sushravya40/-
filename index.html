@@ -85,7 +85,7 @@
         <a class="btn" href="#projects">Projects</a>
         <a class="btn" href="#about">About</a>
         <a class="btn" href="#contact">Contact</a>
-        <a class="btn" href="#" id="downloadResume">Download Resume</a>
+        <a class="btn" href="Sushravya_Resume.pdf" download>Download Resume</a>
       </nav>
     </header>
 
@@ -185,20 +185,21 @@ technology to contribute effectively to the organization’s success while conti
 
   <script>
     // small interactivity: resume download and contact handler
-    document.getElementById('year').textContent = new Date().getFullYear();
+   document.getElementById('year').textContent = new Date().getFullYear();
 
-    document.getElementById('downloadResume').addEventListener('click', function(e){
-      e.preventDefault();
-      // Replace the file path with your actual resume file in the repo (e.g. /resume.pdf)
-      const resumeUrl = '/resume.pdf';
-      // create invisible link to download
-      const a = document.createElement('a');
-      a.href = resumeUrl;
-      a.download = 'Vikas_Raj_Resume.pdf';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    });
+document.getElementById('downloadResume').addEventListener('click', function(e){
+  e.preventDefault();
+  // Point to your actual resume file
+  const resumeUrl = 'Sushravya_Resume.pdf';
+  // Set the download file name
+  const a = document.createElement('a');
+  a.href = resumeUrl;
+  a.download = 'Sushravya_Resume.pdf';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+});
+
 
     // simple contact form - sends email using mailto as fallback
     document.getElementById('contactForm').addEventListener('submit', function(e){
