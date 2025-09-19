@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vikas — Portfolio</title>
+  <meta name="description" content="Vikas Raj — Software Developer. Projects, skills, experience and contact." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724; /* dark navy */
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#7c3aed;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,#071024 0%, #071022 60%); color:#e6eef8}
+    a{color:var(--accent); text-decoration:none}
+    .container{max-width:1000px;margin:32px auto;padding:24px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .avatar{width:64px;height:64px;border-radius:12px;overflow:hidden;flex:0 0 64px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:grid;place-items:center;font-weight:700}
+    .brand h1{font-size:18px;margin:0}
+    nav{display:flex;gap:12px}
+    .btn{background:var(--glass);border:1px solid rgba(255,255,255,0.03);padding:10px 14px;border-radius:10px;color:var(--muted);font-weight:600}
+    .btn:hover{transform:translateY(-2px)}
+
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px;align-items:center}
+    .intro{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:28px;border-radius:16px;border:1px solid var(--glass-2)}
+    .intro h2{margin:0 0 6px 0;font-size:26px}
+    .intro p{margin:0;color:var(--muted);line-height:1.5}
+    .cta{margin-top:18px;display:flex;gap:12px}
+
+    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .sidebar .card + .card{margin-top:14px}
+
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+    .project{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
+    .project h3{margin:0 0 8px 0;font-size:16px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted)}
+
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-weight:600;color:var(--muted)}
+
+    footer{margin-top:36px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;}
+      .projects{grid-template-columns:1fr}
+      .avatar{width:56px;height:56px}
+    }
+
+    /* small utilities */
+    .muted{color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-weight:600}
+
+    /* contact form */
+    form{display:grid;gap:10px}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:inherit}
+    input::placeholder,textarea::placeholder{color:var(--muted)}
+    .row{display:flex;gap:10px}
+    .row> *{flex:1}
+
+    /* theme toggle */
+    .theme-toggle{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="avatar">VR</div>
+        <div>
+          <h1>Vikas Raj</h1>
+          <div class="muted">Software Developer • Full-stack • ML enthusiast</div>
+        </div>
+      </div>
+      <nav>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#about">About</a>
+        <a class="btn" href="#contact">Contact</a>
+        <a class="btn" href="#" id="downloadResume">Download Resume</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="intro card">
+        <h2>Hi — I'm Vikas 👋</h2>
+        <p>I'm a software developer who builds web apps and ML prototypes. I like turning complex problems into simple, beautiful, and fast experiences. Currently open to internships and junior developer roles.</p>
+
+        <div class="cta">
+          <a class="btn" href="#projects">See my work</a>
+          <a class="btn" href="#contact">Let's talk</a>
+        </div>
+
+        <div style="margin-top:18px">
+          <h4 style="margin:0 0 8px 0">Skills</h4>
+          <div class="skills">
+            <div class="skill">JavaScript</div>
+            <div class="skill">Python</div>
+            <div class="skill">React</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">Machine Learning</div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:10px;align-items:center">
+          <div class="pill">📍 Bangalore, India</div>
+          <div class="muted" style="margin-left:auto">Available for hire</div>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="card">
+          <h3 style="margin:0 0 10px 0">Contact</h3>
+          <div class="muted">Email</div>
+          <div style="font-weight:700;margin-bottom:10px">vikas.email@example.com</div>
+          <div class="muted">LinkedIn</div>
+          <div style="font-weight:700;margin-bottom:10px"><a href="#">linkedin.com/in/vikas</a></div>
+          <div class="muted">GitHub</div>
+          <div style="font-weight:700"><a href="https://github.com/vikas-raj-bn" target="_blank">github.com/vikas-raj-bn</a></div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <h3 style="margin:0 0 10px 0">Experience</h3>
+          <div class="muted">Software Intern — Company XYZ</div>
+          <div style="font-weight:600">Jan 2024 — Jun 2024</div>
+          <p class="muted" style="margin:8px 0 0 0;font-size:14px">Built internal tools with React and Node; improved data pipeline performance by 20%.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section id="projects">
+      <h2 style="margin-top:28px">Featured Projects</h2>
+      <div class="projects">
+        <article class="project">
+          <h3>Stress Detection Dashboard</h3>
+          <div class="muted">A machine-learning based dashboard to track stress levels for IT professionals.</div>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">scikit-learn</span>
+            <span class="tag">React</span>
+          </div>
+          <div style="margin-top:10px"><a href="#">View repo</a> • <a href="#">Live demo</a></div>
+        </article>
+
+        <article class="project">
+          <h3>Personal Finance Tracker</h3>
+          <div class="muted">Web app to visualize income/expenses and plan budgets.</div>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">Chart.js</span>
+          </div>
+          <div style="margin-top:10px"><a href="#">View repo</a> • <a href="#">Live demo</a></div>
+        </article>
+
+        <article class="project">
+          <h3>College Event Website</h3>
+          <div class="muted">Static site generator for college fest with schedules and speaker bios.</div>
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <div style="margin-top:10px"><a href="#">View repo</a></div>
+        </article>
+
+        <article class="project">
+          <h3>Chatbot Assistant</h3>
+          <div class="muted">Prototype chatbot for answering student queries using a small knowledge base.</div>
+          <div class="tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">NLP</span>
+          </div>
+          <div style="margin-top:10px"><a href="#">View repo</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" style="margin-top:28px">
+      <h2>About Me</h2>
+      <div class="card" style="margin-top:12px">
+        <p class="muted">I build web applications and ML prototypes. I enjoy learning new tools and shipping clean, maintainable code. When I'm not coding I read product design articles and tinker with Raspberry Pi projects.</p>
+
+        <h4 style="margin-top:12px">Education</h4>
+        <p class="muted" style="margin:6px 0 0 0">B.Tech in Computer Science — Your University (2021)</p>
+
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:28px">
+      <h2>Contact</h2>
+      <div class="card" style="margin-top:12px">
+        <form id="contactForm">
+          <div class="row">
+            <input type="text" id="name" placeholder="Your name" required>
+            <input type="email" id="email" placeholder="your@email.com" required>
+          </div>
+          <textarea id="message" rows="5" placeholder="How can I help?" required></textarea>
+          <div style="display:flex;gap:10px;align-items:center">
+            <button class="btn" type="submit">Send message</button>
+            <div class="muted" style="font-size:13px">Or email me at <a href="mailto:vikas.email@example.com">vikas.email@example.com</a></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      Built with ❤️ • <span class="muted">© <span id="year"></span> Vikas Raj</span>
+    </footer>
+  </div>
+
+  <script>
+    // small interactivity: resume download and contact handler
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('downloadResume').addEventListener('click', function(e){
+      e.preventDefault();
+      // Replace the file path with your actual resume file in the repo (e.g. /resume.pdf)
+      const resumeUrl = '/resume.pdf';
+      // create invisible link to download
+      const a = document.createElement('a');
+      a.href = resumeUrl;
+      a.download = 'Vikas_Raj_Resume.pdf';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    });
+
+    // simple contact form - sends email using mailto as fallback
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent('Portfolio contact from ' + name);
+      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+      window.location.href = 'mailto:vikas.email@example.com?subject=' + subject + '&body=' + body;
+    });
+
+    // small enhancement: replace avatar initials with first letters of name if available
+    (function(){
+      const avatar = document.querySelector('.avatar');
+      // if you want to dynamically set initials, change below
+      // avatar.textContent = 'VR';
+    })();
+  </script>
+</body>
+</html>
