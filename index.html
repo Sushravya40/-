@@ -104,6 +104,34 @@
     .contact-item i{color:var(--accent)} 
     .contact-form { background: var(--card); padding: 30px 25px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.25); max-width: 500px; margin: 20px auto; transition: transform 0.3s, box-shadow 0.3s; }
 
+    .contact-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.contact-btn i {
+  font-size: 18px;
+}
+
+.contact-btn:hover {
+  background: #5b21b6; /* darker accent */
+}
+
     /* CONTACT */
     #contact{margin-top:60px}
     #contact h2 { text-align: left; }
@@ -270,13 +298,19 @@
     </section>
 
     <!-- CONTACT --> <section id="contact"> 
-      <h2>Contact</h2>
-      <div class="card contact-info">
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i> 
-          <a href="mailto:sushravya1723@gmail.com">sushravya1723@gmail.com</a></div>
-        <div class="contact-item"><i class="fas fa-phone"></i> +91-9380415588</div>
-        <div class="contact-item"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank">LinkedIn Profile</a></div>
+     <h2>Contact</h2>
+<div class="contact-buttons">
+  <a href="mailto:sushravya1723@gmail.com" class="contact-btn">
+    <i class="fas fa-envelope"></i> Email
+  </a>
+  <a href="tel:+919380415588" class="contact-btn">
+    <i class="fas fa-phone"></i> Call
+  </a>
+  <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank" class="contact-btn">
+    <i class="fab fa-linkedin"></i> LinkedIn
+  </a>
+</div>
+
     
     
     <!-- CONTACT -->
