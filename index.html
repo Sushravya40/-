@@ -4,207 +4,204 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sushravya B C — Portfolio</title>
-  <meta name="description" content="Sushravya B C — Portfolio showcasing projects, skills, experience, and contact details." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    :root{
+    :root {
       --bg:#0f1724;
-      --card:#0b1220;
+      --text:#e6eef8;
       --muted:#94a3b8;
       --accent:#7c3aed;
-      --glass: rgba(255,255,255,0.04);
-      --glass-2: rgba(255,255,255,0.02);
-      color-scheme: dark;
+      --card:#161f34;
+      --light-bg:#f9fafb;
+      --light-text:#111827;
+      --light-muted:#6b7280;
+      --light-card:#ffffff;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:'Inter',system-ui,Segoe UI,Roboto,Arial; background:linear-gradient(180deg,#071024 0%, #071022 60%); color:#e6eef8}
-    a{color:var(--accent); text-decoration:none}
-    .container{max-width:1000px;margin:0 auto;padding:16px}
-
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .brand{display:flex;align-items:center;gap:14px}
-    .avatar{width:64px;height:64px;border-radius:12px;overflow:hidden;flex:0 0 64px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:grid;place-items:center;font-weight:700}
-    .brand h1{font-size:18px;margin:0}
-    nav{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{background:var(--glass);border:1px solid rgba(255,255,255,0.03);padding:10px 14px;border-radius:10px;color:var(--muted);font-weight:600;transition:0.2s}
-    .btn:hover{transform:translateY(-2px)}
-
-    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px;align-items:flex-start}
-    .intro{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:28px;border-radius:16px;border:1px solid var(--glass-2)}
-    .intro h2{margin:0 0 6px 0;font-size:26px}
-    .intro p{margin:0;color:var(--muted);line-height:1.6}
-    .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-
-    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
-    .sidebar .card + .card{margin-top:14px}
-
-    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:18px}
-    .project{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
-    .project h3{margin:0 0 8px 0;font-size:16px}
-    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted)}
-
-    .skills{display:flex;flex-wrap:wrap;gap:10px}
-    .skill{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-weight:600;color:var(--muted)}
-
-    footer{margin-top:36px;text-align:center;color:var(--muted);font-size:13px}
-
-    /* responsive */
-    @media (max-width:880px){
-      .hero{grid-template-columns:1fr}
-      .avatar{width:56px;height:56px}
-      header{flex-direction:column;align-items:flex-start}
-      nav{width:100%;justify-content:flex-start;flex-wrap:wrap}
+    [data-theme="light"] {
+      --bg: var(--light-bg);
+      --text: var(--light-text);
+      --muted: var(--light-muted);
+      --card: var(--light-card);
     }
+    body {
+      margin:0;
+      font-family:'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+    a { color: var(--accent); text-decoration:none }
 
-    .muted{color:var(--muted)}
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-weight:600}
+    .container{max-width:1100px;margin:auto;padding:20px}
 
-    form{display:grid;gap:10px}
-    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:inherit;width:100%}
-    input::placeholder,textarea::placeholder{color:var(--muted)}
-    .row{display:flex;gap:10px;flex-wrap:wrap}
-    .row> *{flex:1}
+    /* HEADER */
+    header {display:flex;justify-content:space-between;align-items:center;padding:10px 0}
+    .brand h1{margin:0;font-size:22px;font-weight:700}
+    .brand p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+    nav {display:flex;align-items:center;gap:15px}
+    .icon-link{font-size:20px;color:var(--text)}
+    .theme-toggle{cursor:pointer;padding:6px 10px;border:1px solid var(--muted);border-radius:6px;font-size:14px}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 300px;gap:30px;align-items:center;margin-top:40px}
+    .hero h2{margin:0;font-size:28px;font-weight:700}
+    .hero p{color:var(--muted);line-height:1.6}
+    .hero-buttons{margin-top:20px;display:flex;gap:12px}
+    .btn{padding:10px 16px;border-radius:8px;background:var(--accent);color:#fff;font-weight:600}
+    .btn-outline{background:none;border:1px solid var(--accent);color:var(--accent)}
+    .hero img{width:100%;border-radius:16px;object-fit:cover;border:2px solid var(--accent)}
+
+    /* CARDS */
+    .card{background:var(--card);padding:20px;border-radius:12px;margin-top:20px}
+
+    /* PROJECTS */
+    #projects{margin-top:60px}
+    .projects-grid{display:grid;gap:20px;grid-template-columns:1fr 1fr}
+    .project-box{background:var(--card);padding:18px;border-radius:10px;border-left:4px solid var(--accent)}
+    .project-box h3{margin:0 0 8px}
+    .project-box p{margin:0;color:var(--muted);line-height:1.4}
+
+    /* SKILLS */
+    #skills{margin-top:60px}
+    .skills-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .skill{padding:8px 12px;border-radius:20px;background:rgba(124,58,237,0.1);color:var(--accent);font-weight:600}
+
+    /* EDUCATION */
+    #education{margin-top:60px}
+    .edu-grid{display:grid;gap:20px}
+    .edu-box{background:var(--card);padding:18px;border-radius:10px;border-left:4px solid var(--accent)}
+    .edu-box h3{margin:0;font-size:18px}
+    .edu-box p{margin:6px 0 0;color:var(--muted)}
+
+    /* CONTACT */
+    #contact{margin-top:60px}
+    .contact-info{display:grid;gap:10px}
+    .contact-item{display:flex;align-items:center;gap:10px;font-weight:600}
+    .contact-item i{color:var(--accent)}
+
+    footer{margin-top:50px;text-align:center;color:var(--muted);font-size:13px}
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- HEADER -->
     <header>
       <div class="brand">
-        <div class="avatar">S</div>
-        <div>
-          <h1>Sushravya B C</h1>
-          <div class="muted">Aspiring Software Developer</div>
-        </div>
+        <h1><b>Sushravya B C</b></h1>
+        <p>📍 Bangalore, India</p>
       </div>
       <nav>
-        <a class="btn" href="#projects">Projects</a>
-        <a class="btn" href="#about">About</a>
-        <a class="btn" href="#contact">Contact</a>
-      <a class="btn" id="downloadResume" href="Sushravya_Resume.pdf" download>Download Resume</a>
+        <a href="https://github.com/Sushravya40" target="_blank" class="icon-link"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank" class="icon-link"><i class="fab fa-linkedin"></i></a>
+        <button class="theme-toggle" id="toggleTheme">🌙 Dark</button>
+      </nav>
     </header>
 
+    <!-- HERO -->
     <section class="hero">
-      <div class="intro card">
-        <h2>Hi — Sushravya B C 👋</h2>
-        <p>Seeking an entry-level position in computer applications to utilize problem-solving skills, programming knowledge, and passion for technology to contribute effectively to the organization’s success while continuously learning and growing.</p>
-
-        <div class="cta">
-          <a class="btn" href="#contact">Let's talk</a>
-        </div>
-        
-        <div style="margin-top:18px">
-          <h4 style="margin:0 0 8px 0">Skills</h4>
-          <div class="skills">
-            <div class="skill">C</div>
-            <div class="skill">Python</div>
-            <div class="skill">HTML</div>
-            <div class="skill">CSS</div>
-            <div class="skill">Machine Learning</div>
-            <div class="skill">SQL</div>
-          </div>
-        </div>
-
-        <div style="margin-top:18px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-          <div class="pill">📍 Bangalore, India</div>
-          <div class="muted" style="margin-left:auto">Available for hire</div>
+      <div>
+        <h2>Hello, I'm <b>Sushravya</b> 👋</h2>
+        <p>A passionate software developer and machine learning enthusiast.<br>
+        I enjoy building web apps, solving problems, and learning modern technologies.<br>
+        Looking for opportunities to contribute and grow in the IT industry.</p>
+        <div class="hero-buttons">
+          <a class="btn" href="#contact">Contact Me</a>
+          <a class="btn-outline" href="Sushravya_Resume.pdf" download>Download Resume</a>
         </div>
       </div>
-
-      <aside class="sidebar">
-        <div class="card">
-          <h3 style="margin:0 0 10px 0">Contact</h3>
-          <div class="muted">Email</div>
-          <div style="font-weight:700;margin-bottom:10px">sushravya1723@gmail.com</div>
-          <div class="muted">LinkedIn</div>
-         <div style="font-weight:700;margin-bottom:10px">
-  <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank">
-    linkedin.com/in/sushravya-b-c-6bb421228
-  </a>
-</div>
-
-          <div class="muted">GitHub</div>
-          <div style="font-weight:700"><a href="https://github.com/Sushravya40" target="_blank">github.com/Sushravya</a></div>
-        </div>
-      </aside>
-    </section>
-
-    <section id="projects">
-      <h2 style="margin-top:28px">Featured Projects</h2>
-      <div class="projects">
-        <article class="project">
-          <h3>Stress Detection in IT Professionals using ML</h3>
-          <div class="muted">A machine-learning based website to track stress levels for IT professionals.</div>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">Flask</span>
-            <span class="tag">scikit-learn</span>
-            <span class="tag">React</span>
-          </div>
-          <div style="margin-top:10px"><a href="#">View repo</a> • <a href="#">Live demo</a></div>
-        </article>
+      <div>
+        <img src="your-photo.jpg" alt="Sushravya Photo">
       </div>
     </section>
 
-    <section id="about" style="margin-top:28px">
+    <!-- ABOUT -->
+    <section id="about">
       <h2>About Me</h2>
-      <div class="card" style="margin-top:12px">
-        <p class="muted">I build web applications and ML prototypes. I enjoy learning new tools and shipping clean, maintainable code. When I'm not coding I read product design articles and tinker with Raspberry Pi projects.</p>
-
-        <h4 style="margin-top:12px">Education</h4>
-        <p class="muted" style="margin:6px 0 0 0">MCA in Computer Application — VTU (2025)</p>
-        <p class="muted" style="margin:6px 0 0 0">BCA in Computer Application — University of Mysore (2023)</p>
+      <div class="card">
+        <p>I build web applications and ML prototypes. I enjoy learning new tools and shipping clean, maintainable code. 
+        When I'm not coding, I explore design, read, and experiment with tech projects.</p>
       </div>
     </section>
 
-    <section id="contact" style="margin-top:28px">
+    <!-- EDUCATION -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="edu-grid">
+        <div class="edu-box">
+          <h3>MCA in Computer Application</h3>
+          <p>VTU — 2025</p>
+        </div>
+        <div class="edu-box">
+          <h3>BCA in Computer Application</h3>
+          <p>University of Mysore — 2023</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-box">
+          <h3>Stress Detection in IT Professionals</h3>
+          <p>Machine learning web app that tracks stress levels using health data.</p>
+          <p><a href="#">🔗 GitHub</a> • <a href="#">🌐 Live Demo</a></p>
+        </div>
+        <div class="project-box">
+          <h3>Portfolio Website</h3>
+          <p>Responsive personal portfolio with dark/light mode and modern UI.</p>
+          <p><a href="#">🔗 GitHub</a> • <a href="#">🌐 Live Demo</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="card">
+        <div class="skills-list">
+          <div class="skill">C</div>
+          <div class="skill">Python</div>
+          <div class="skill">HTML</div>
+          <div class="skill">CSS</div>
+          <div class="skill">SQL</div>
+          <div class="skill">Machine Learning</div>
+          <div class="skill">Flask</div>
+          <div class="skill">GitHub</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
       <h2>Contact</h2>
-      <div class="card" style="margin-top:12px">
-        <form id="contactForm">
-          <div class="row">
-            <input type="text" id="name" placeholder="Your name" required>
-            <input type="email" id="email" placeholder="your@email.com" required>
-          </div>
-          <textarea id="message" rows="5" placeholder="How can I help?" required></textarea>
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-            <button class="btn" type="submit">Send message</button>
-            <div class="muted" style="font-size:13px">
-              Or email me at <a href="mailto:sushravya1723@gmail.com">sushravya1723@gmail.com</a>
-            </div>
-          </div>
-        </form>
+      <div class="card contact-info">
+        <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:sushravya1723@gmail.com">sushravya1723@gmail.com</a></div>
+        <div class="contact-item"><i class="fas fa-phone"></i> +91-9876543210</div>
+        <div class="contact-item"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank">LinkedIn Profile</a></div>
+        <div class="contact-item"><i class="fas fa-id-card"></i> <a href="Sushravya.vcf" download>Download vCard</a></div>
       </div>
     </section>
 
     <footer>
-      Built with ❤️ • <span class="muted">© <span id="year"></span> Sushravya B C</span>
+      Built with ❤️ • © <span id="year"></span> Sushravya B C
     </footer>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Resume download
-    document.getElementById('downloadResume').addEventListener('click', function(e){
-      e.preventDefault();
-      const resumeUrl = 'Sushravya_Resume.pdf';
-      const a = document.createElement('a');
-      a.href = resumeUrl;
-      a.download = 'Sushravya_Resume.pdf';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    });
-
-    // Contact form mailto
-    document.getElementById('contactForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      const subject = encodeURIComponent('Portfolio contact from ' + name);
-      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
-      window.location.href = 'mailto:sushravya1723@gmail.com?subject=' + subject + '&body=' + body;
+    // Theme Toggle
+    const btn = document.getElementById('toggleTheme');
+    btn.addEventListener('click', ()=>{
+      if(document.body.getAttribute('data-theme')==="light"){
+        document.body.removeAttribute('data-theme');
+        btn.textContent="🌙 Dark";
+      } else {
+        document.body.setAttribute('data-theme',"light");
+        btn.textContent="☀️ Light";
+      }
     });
   </script>
 </body>
