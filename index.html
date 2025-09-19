@@ -173,26 +173,23 @@
       background: #5b21b6;
     }
 
-   /* Mobile Fixes */
+  /* Mobile Fixes */
 @media (max-width: 768px) {
   .container {
-    padding: 0 20px;  /* left and right spacing */
+    padding: 0 15px;  /* keep small gap on left/right */
   }
 
   .contact-form {
-    margin: 20px 0;   /* keep it inside container, not centered */
-    width: 100%;      /* let it shrink inside padding */
-    box-sizing: border-box; /* ensures padding is respected */
+    width: 100%;         /* use full available width */
+    max-width: 100%;     /* override the 500px limit */
+    margin: 20px 0;      /* no auto-centering */
+    box-sizing: border-box;
   }
 
   .contact-form input,
   .contact-form textarea {
-    width: 100%;
-    box-sizing: border-box; /* prevent overflow beyond form */
-  }
-
-  #contact h2 {
-    text-align: left; /* stays aligned left on mobile */
+    width: 100%;         /* fit inside form */
+    box-sizing: border-box;
   }
 }
 
