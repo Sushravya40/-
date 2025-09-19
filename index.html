@@ -43,14 +43,35 @@
     .icon-link{font-size:20px;color:var(--text)}
     .theme-toggle{cursor:pointer;padding:6px 10px;border:1px solid var(--muted);border-radius:6px;font-size:14px}
 
-    /* HERO */
-    .hero{display:grid;grid-template-columns:1fr 300px;gap:30px;align-items:center;margin-top:40px}
+    /* HERO - desktop */
+    .hero {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 30px;
+      align-items: center;
+    }
     .hero h2{margin:0;font-size:28px;font-weight:700}
     .hero p{color:var(--muted);line-height:1.6}
     .hero-buttons{margin-top:20px;display:flex;gap:12px}
     .btn{padding:10px 16px;border-radius:8px;background:var(--accent);color:#fff;font-weight:600}
     .btn-outline{background:none;border:1px solid var(--accent);color:var(--accent)}
     .hero img{width:100%;border-radius:16px;object-fit:cover;border:2px solid var(--accent)}
+
+    /* HERO - mobile (reorder content) */
+    @media (max-width: 768px) {
+      .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+      }
+      .hero h2 { order: 1; }
+      .hero img { order: 2; max-width: 220px; }
+      .hero p { order: 3; }
+      .hero-buttons { order: 4; justify-content: center; }
+    }
 
     /* CARDS */
     .card{background:var(--card);padding:20px;border-radius:12px;margin-top:20px}
@@ -61,6 +82,9 @@
     .project-box{background:var(--card);padding:18px;border-radius:10px;border-left:4px solid var(--accent)}
     .project-box h3{margin:0 0 8px}
     .project-box p{margin:0;color:var(--muted);line-height:1.4}
+    @media (max-width:768px){
+      .projects-grid{grid-template-columns:1fr;} /* stack projects on mobile */
+    }
 
     /* SKILLS */
     #skills{margin-top:60px}
@@ -76,9 +100,7 @@
 
     /* CONTACT */
     #contact{margin-top:60px}
-    #contact h2 {
-      text-align: left;   /* 👈 heading aligned left */
-    }
+    #contact h2 { text-align: left; }
     .contact-info{display:grid;gap:10px}
     .contact-item{display:flex;align-items:center;gap:10px;font-weight:600}
     .contact-item i{color:var(--accent)}
@@ -89,24 +111,15 @@
       border-radius: 20px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.25);
       max-width: 500px;
-      margin: 20px 0;   /* 👈 aligned left */
+      margin: 20px 0;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-
-    .contact-form:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.35);
-    }
-
-    .contact-form .form-group {
-      position: relative;
-      margin-bottom: 22px;
-    }
-
+    .contact-form:hover {transform: translateY(-5px);box-shadow: 0 12px 35px rgba(0,0,0,0.35);}
+    .contact-form .form-group {position: relative;margin-bottom: 22px;}
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      padding: 16px 16px 16px 16px;
+      padding: 16px;
       border-radius: 12px;
       border: 1px solid var(--muted);
       background: var(--bg);
@@ -114,15 +127,14 @@
       font-family: inherit;
       font-size: 15px;
       resize: none;
+      box-sizing: border-box;
     }
-
     .contact-form input:focus,
     .contact-form textarea:focus {
       border-color: var(--accent);
       outline: none;
       background: rgba(124, 58, 237, 0.05);
     }
-
     .contact-form label {
       position: absolute;
       top: 50%;
@@ -135,7 +147,6 @@
       transition: 0.3s ease all;
       padding: 0 4px;
     }
-
     .contact-form input:focus + label,
     .contact-form input:not(:placeholder-shown) + label,
     .contact-form textarea:focus + label,
@@ -145,19 +156,13 @@
       color: var(--accent);
       background: var(--card);
     }
-
     .contact-form .form-footer {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       align-items: center;
     }
-
-    .contact-form .note {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
+    .contact-form .note {font-size: 13px;color: var(--muted);}
     .contact-form .btn {
       background: var(--accent);
       color: #fff;
@@ -168,114 +173,7 @@
       font-weight: 600;
       transition: 0.3s;
     }
-
-    .contact-form .btn:hover {
-      background: #5b21b6;
-    }
-
-  /* Mobile Fixes */
-/* Mobile Hero Fix: place photo after heading */
-@media (max-width: 768px) {
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .hero h2 {
-    order: 1;
-  }
-
-  .hero img {
-    order: 2;
-    margin: 15px 0;
-    max-width: 220px; /* adjust size for mobile */
-    border-radius: 12px;
-  }
-
-  .hero p,
-  .hero .hero-buttons {
-    order: 3;
-  }
-}
-
-/* HERO - desktop layout (keeps existing desktop look) */
-.hero {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 30px;
-  align-items: center;
-}
-
-.hero-left h2 {
-  margin: 0 0 12px 0;
-  font-size: 28px;
-  font-weight: 700;
-}
-
-/* image base */
-.hero-photo {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 16px;
-  display: block;
-}
-
-/* show/hide helpers */
-.hero-photo--mobile { display: none; }   /* hide mobile image on desktop */
-.hero-photo--desktop { display: block; } /* show desktop image by default */
-
-/* MOBILE: heading -> mobile-photo -> paragraph+buttons */
-@media (max-width: 768px) {
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 12px;
-  }
-
-  /* hide the right-column desktop image on mobile */
-  .hero-photo--desktop { display: none; }
-
-  /* show the mobile image placed after heading */
-  .hero-photo--mobile {
-    display: block;
-    max-width: 220px;   /* control size on phones */
-    margin: 12px 0;
-    border-radius: 12px;
-  }
-
-  /* center the text and make left column full width with padding */
-  .hero-left {
-    width: 100%;
-    padding: 0 16px;
-    box-sizing: border-box;
-  }
-
-  .hero-left p {
-    margin-top: 8px;
-    color: var(--muted);
-    text-align: center;
-    line-height: 1.6;
-  }
-
-  .hero-buttons {
-    margin-top: 12px;
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-  }
-
-  .hero-left h2 {
-    text-align: center;
-  }
-}
-
-
+    .contact-form .btn:hover {background: #5b21b6;}
 
     footer{margin-top:50px;text-align:center;color:var(--muted);font-size:13px}
   </style>
@@ -296,30 +194,21 @@
     </header>
 
     <!-- HERO -->
-   <!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <h2>Hello, I'm <b>Sushravya</b> 👋</h2>
-
-    <!-- mobile-only image (placed right after heading) -->
-    <img src="your-photo.jpg" alt="Sushravya Photo" class="hero-photo hero-photo--mobile">
-
-    <p>A passionate software developer and machine learning enthusiast.<br>
-    I enjoy building web apps, solving problems, and learning modern technologies.<br>
-    Looking for opportunities to contribute and grow in the IT industry.</p>
-
-    <div class="hero-buttons">
-      <a class="btn" href="#contact">Contact Me</a>
-      <a class="btn-outline" href="Sushravya_Resume.pdf" download>Download Resume</a>
-    </div>
-  </div>
-
-  <!-- desktop-only image (keeps your desktop layout identical) -->
-  <div class="hero-right">
-    <img src="your-photo.jpg" alt="Sushravya Photo" class="hero-photo hero-photo--desktop">
-  </div>
-</section>
-
+    <section class="hero">
+      <div class="hero-left">
+        <h2>Hello, I'm <b>Sushravya</b> 👋</h2>
+        <p>A passionate software developer and machine learning enthusiast.<br>
+        I enjoy building web apps, solving problems, and learning modern technologies.<br>
+        Looking for opportunities to contribute and grow in the IT industry.</p>
+        <div class="hero-buttons">
+          <a class="btn" href="#contact">Contact Me</a>
+          <a class="btn-outline" href="Sushravya_Resume.pdf" download>Download Resume</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img src="your-photo.jpg" alt="Sushravya Photo">
+      </div>
+    </section>
 
     <!-- ABOUT -->
     <section id="about">
