@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Sushravya B C
+N:B C;Sushravya;;;
+ORG:Software Developer & ML Enthusiast
+TITLE:MCA Student
+EMAIL;type=INTERNET;type=WORK;type=pref:sushravya1723@gmail.com
+TEL;type=CELL;type=VOICE;type=pref:+91-9380415588
+ADR;type=HOME;label="Bangalore, India":;;Bangalore;;;India
+URL:https://www.linkedin.com/in/sushravya-b-c-6bb421228
+END:VCARD
