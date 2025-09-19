@@ -99,19 +99,36 @@
     .edu-box p{margin:6px 0 0;color:var(--muted)}
 
     /* CONTACT */
-    #contact{margin-top:60px}
-    #contact h2 { text-align: left; }
-    .contact-info{display:grid;gap:10px}
-    .contact-item{display:flex;align-items:center;gap:10px;font-weight:600}
-    .contact-item i{color:var(--accent)}
-    
+    #contact {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    /* Contact Info Card */
+    .contact-info {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+    .contact-item i { color: var(--accent); }
+
+    /* Contact Form */
     .contact-form {
       background: var(--card);
       padding: 30px 25px;
       border-radius: 20px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-      max-width: 500px;
-      margin: 20px 0;
+      width: 100%;
+      margin: 0;
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .contact-form:hover {transform: translateY(-5px);box-shadow: 0 12px 35px rgba(0,0,0,0.35);}
@@ -174,6 +191,13 @@
       transition: 0.3s;
     }
     .contact-form .btn:hover {background: #5b21b6;}
+
+    /* Mobile: stack contact boxes */
+    @media (max-width: 768px) {
+      #contact {
+        grid-template-columns: 1fr;
+      }
+    }
 
     footer{margin-top:50px;text-align:center;color:var(--muted);font-size:13px}
   </style>
@@ -270,28 +294,34 @@
 
     <!-- CONTACT -->
     <section id="contact">
-      <h2>Contact Me</h2>
-      <div class="contact-container">
-        <div class="card contact-form">
-          <form id="contactForm">
-            <div class="form-group">
-              <input type="text" id="name" placeholder=" " required>
-              <label for="name">Your Name</label>
-            </div>
-            <div class="form-group">
-              <input type="email" id="email" placeholder=" " required>
-              <label for="email">Your Email</label>
-            </div>
-            <div class="form-group">
-              <textarea id="message" rows="5" placeholder=" " required></textarea>
-              <label for="message">Your Message</label>
-            </div>
-            <div class="form-footer">
-              <button class="btn" type="submit">Send Message</button>
-              <span class="note">Or email me at <a href="mailto:sushravya1723@gmail.com">sushravya1723@gmail.com</a></span>
-            </div>
-          </form>
-        </div>
+      <!-- Contact Info -->
+      <div class="card contact-info">
+        <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:sushravya1723@gmail.com">sushravya1723@gmail.com</a></div>
+        <div class="contact-item"><i class="fas fa-phone"></i> +91-9380415588</div>
+        <div class="contact-item"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank">LinkedIn Profile</a></div>
+        <div class="contact-item"><i class="fas fa-id-card"></i> <a href="Sushravya.vcf" download>Download vCard</a></div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="card contact-form">
+        <form id="contactForm">
+          <div class="form-group">
+            <input type="text" id="name" placeholder=" " required>
+            <label for="name">Your Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder=" " required>
+            <label for="email">Your Email</label>
+          </div>
+          <div class="form-group">
+            <textarea id="message" rows="5" placeholder=" " required></textarea>
+            <label for="message">Your Message</label>
+          </div>
+          <div class="form-footer">
+            <button class="btn" type="submit">Send Message</button>
+            <span class="note">Or email me at <a href="mailto:sushravya1723@gmail.com">sushravya1723@gmail.com</a></span>
+          </div>
+        </form>
       </div>
     </section>
 
