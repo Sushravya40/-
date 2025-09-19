@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sushravya B C— Portfolio</title>
-  <meta name="description" content="Vikas Raj — Software Developer. Projects, skills, experience and contact." />
+  <title>Sushravya B C — Portfolio</title>
+  <meta name="description" content="Sushravya B C — Portfolio showcasing projects, skills, experience, and contact details." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0f1724; /* dark navy */
+      --bg:#0f1724;
       --card:#0b1220;
       --muted:#94a3b8;
       --accent:#7c3aed;
@@ -16,29 +16,29 @@
       --glass-2: rgba(255,255,255,0.02);
       color-scheme: dark;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,#071024 0%, #071022 60%); color:#e6eef8}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:'Inter',system-ui,Segoe UI,Roboto,Arial; background:linear-gradient(180deg,#071024 0%, #071022 60%); color:#e6eef8}
     a{color:var(--accent); text-decoration:none}
-    .container{max-width:1000px;margin:32px auto;padding:24px}
+    .container{max-width:1000px;margin:0 auto;padding:16px}
 
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
     .brand{display:flex;align-items:center;gap:14px}
     .avatar{width:64px;height:64px;border-radius:12px;overflow:hidden;flex:0 0 64px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:grid;place-items:center;font-weight:700}
     .brand h1{font-size:18px;margin:0}
-    nav{display:flex;gap:12px}
-    .btn{background:var(--glass);border:1px solid rgba(255,255,255,0.03);padding:10px 14px;border-radius:10px;color:var(--muted);font-weight:600}
+    nav{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{background:var(--glass);border:1px solid rgba(255,255,255,0.03);padding:10px 14px;border-radius:10px;color:var(--muted);font-weight:600;transition:0.2s}
     .btn:hover{transform:translateY(-2px)}
 
-    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px;align-items:center}
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px;align-items:flex-start}
     .intro{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:28px;border-radius:16px;border:1px solid var(--glass-2)}
     .intro h2{margin:0 0 6px 0;font-size:26px}
-    .intro p{margin:0;color:var(--muted);line-height:1.5}
-    .cta{margin-top:18px;display:flex;gap:12px}
+    .intro p{margin:0;color:var(--muted);line-height:1.6}
+    .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
 
     .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
     .sidebar .card + .card{margin-top:14px}
 
-    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:18px}
     .project{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02)}
     .project h3{margin:0 0 8px 0;font-size:16px}
     .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
@@ -51,24 +51,20 @@
 
     /* responsive */
     @media (max-width:880px){
-      .hero{grid-template-columns:1fr;}
-      .projects{grid-template-columns:1fr}
+      .hero{grid-template-columns:1fr}
       .avatar{width:56px;height:56px}
+      header{flex-direction:column;align-items:flex-start}
+      nav{width:100%;justify-content:flex-start;flex-wrap:wrap}
     }
 
-    /* small utilities */
     .muted{color:var(--muted)}
     .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-weight:600}
 
-    /* contact form */
     form{display:grid;gap:10px}
-    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:inherit}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:inherit;width:100%}
     input::placeholder,textarea::placeholder{color:var(--muted)}
-    .row{display:flex;gap:10px}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
     .row> *{flex:1}
-
-    /* theme toggle */
-    .theme-toggle{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;cursor:pointer}
   </style>
 </head>
 <body>
@@ -78,22 +74,21 @@
         <div class="avatar">S</div>
         <div>
           <h1>Sushravya B C</h1>
-          <div class="muted">.............</div>
+          <div class="muted">Aspiring Software Developer</div>
         </div>
       </div>
       <nav>
         <a class="btn" href="#projects">Projects</a>
         <a class="btn" href="#about">About</a>
         <a class="btn" href="#contact">Contact</a>
-        <a class="btn" href="Sushravya_Resume.pdf" download>Download Resume</a>
+        <a class="btn" id="downloadResume" href="Sushravya_Resume.pdf" download>Download Resume</a>
       </nav>
     </header>
 
     <section class="hero">
       <div class="intro card">
-        <h2>Hi — Sushravya B C👋</h2>
-        <p>Seeking an entry-level position in computer applications to utilize problem-solving skills, programming knowledge, and passion for 
-technology to contribute effectively to the organization’s success while continuously learning and growing.</p>
+        <h2>Hi — Sushravya B C 👋</h2>
+        <p>Seeking an entry-level position in computer applications to utilize problem-solving skills, programming knowledge, and passion for technology to contribute effectively to the organization’s success while continuously learning and growing.</p>
 
         <div class="cta">
           <a class="btn" href="#projects">See my work</a>
@@ -108,11 +103,11 @@ technology to contribute effectively to the organization’s success while conti
             <div class="skill">HTML</div>
             <div class="skill">CSS</div>
             <div class="skill">Machine Learning</div>
-              <div class="skill">SQL</div>
+            <div class="skill">SQL</div>
           </div>
         </div>
 
-        <div style="margin-top:18px;display:flex;gap:10px;align-items:center">
+        <div style="margin-top:18px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
           <div class="pill">📍 Bangalore, India</div>
           <div class="muted" style="margin-left:auto">Available for hire</div>
         </div>
@@ -124,7 +119,7 @@ technology to contribute effectively to the organization’s success while conti
           <div class="muted">Email</div>
           <div style="font-weight:700;margin-bottom:10px">sushravya1723@gmail.com</div>
           <div class="muted">LinkedIn</div>
-          <div style="font-weight:700;margin-bottom:10px"><a href="#">linkedin.com/in/sushravya-b-c-6bb421228 </a></div>
+          <div style="font-weight:700;margin-bottom:10px"><a href="#">linkedin.com/in/sushravya-b-c-6bb421228</a></div>
           <div class="muted">GitHub</div>
           <div style="font-weight:700"><a href="https://github.com/Sushravya40" target="_blank">github.com/Sushravya</a></div>
         </div>
@@ -135,7 +130,7 @@ technology to contribute effectively to the organization’s success while conti
       <h2 style="margin-top:28px">Featured Projects</h2>
       <div class="projects">
         <article class="project">
-          <h3>Stress Detection in IT professionals using ML</h3>
+          <h3>Stress Detection in IT Professionals using ML</h3>
           <div class="muted">A machine-learning based website to track stress levels for IT professionals.</div>
           <div class="tags">
             <span class="tag">Python</span>
@@ -156,8 +151,6 @@ technology to contribute effectively to the organization’s success while conti
         <h4 style="margin-top:12px">Education</h4>
         <p class="muted" style="margin:6px 0 0 0">MCA in Computer Application — VTU (2025)</p>
         <p class="muted" style="margin:6px 0 0 0">BCA in Computer Application — University of Mysore (2023)</p>
-        
-
       </div>
     </section>
 
@@ -170,12 +163,11 @@ technology to contribute effectively to the organization’s success while conti
             <input type="email" id="email" placeholder="your@email.com" required>
           </div>
           <textarea id="message" rows="5" placeholder="How can I help?" required></textarea>
-          <div style="display:flex;gap:10px;align-items:center">
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
             <button class="btn" type="submit">Send message</button>
-      <div class="muted" style="font-size:13px">
-  Or email me at <a href="mailto:sushravya1723@gmail.com">sushravya1723@gmail.com</a>
-</div>
-
+            <div class="muted" style="font-size:13px">
+              Or email me at <a href="mailto:sushravya1723@gmail.com">sushravya1723@gmail.com</a>
+            </div>
           </div>
         </form>
       </div>
@@ -187,24 +179,21 @@ technology to contribute effectively to the organization’s success while conti
   </div>
 
   <script>
-    // small interactivity: resume download and contact handler
-   document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-document.getElementById('downloadResume').addEventListener('click', function(e){
-  e.preventDefault();
-  // Point to your actual resume file
-  const resumeUrl = 'Sushravya_Resume.pdf';
-  // Set the download file name
-  const a = document.createElement('a');
-  a.href = resumeUrl;
-  a.download = 'Sushravya_Resume.pdf';
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-});
+    // Resume download
+    document.getElementById('downloadResume').addEventListener('click', function(e){
+      e.preventDefault();
+      const resumeUrl = 'Sushravya_Resume.pdf';
+      const a = document.createElement('a');
+      a.href = resumeUrl;
+      a.download = 'Sushravya_Resume.pdf';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    });
 
-
-    // simple contact form - sends email using mailto as fallback
+    // Contact form mailto
     document.getElementById('contactForm').addEventListener('submit', function(e){
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
@@ -212,15 +201,8 @@ document.getElementById('downloadResume').addEventListener('click', function(e){
       const message = document.getElementById('message').value.trim();
       const subject = encodeURIComponent('Portfolio contact from ' + name);
       const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
-      window.location.href = 'mailto:vikas.email@example.com?subject=' + subject + '&body=' + body;
+      window.location.href = 'mailto:sushravya1723@gmail.com?subject=' + subject + '&body=' + body;
     });
-
-    // small enhancement: replace avatar initials with first letters of name if available
-    (function(){
-      const avatar = document.querySelector('.avatar');
-      // if you want to dynamically set initials, change below
-      // avatar.textContent = 'VR';
-    })();
   </script>
 </body>
 </html>
