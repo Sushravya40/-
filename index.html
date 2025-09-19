@@ -173,6 +173,22 @@
       background: #5b21b6;
     }
 
+    /* Mobile Fixes */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px; /* adds breathing space from screen edge */
+  }
+
+  .contact-form {
+    margin: 20px auto;  /* center form only on mobile */
+    width: 100%;        /* take full width inside container */
+  }
+
+  #contact h2 {
+    text-align: center; /* center heading on small screens */
+  }
+}
+
     footer{margin-top:50px;text-align:center;color:var(--muted);font-size:13px}
   </style>
 </head>
