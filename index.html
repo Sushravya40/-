@@ -79,6 +79,95 @@
     .contact-info{display:grid;gap:10px}
     .contact-item{display:flex;align-items:center;gap:10px;font-weight:600}
     .contact-item i{color:var(--accent)}
+.contact-form {
+  background: var(--card);
+  padding: 30px 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  max-width: 500px;
+  margin: 20px auto;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+}
+
+.contact-form .form-group {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 16px 16px 16px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--muted);
+  background: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 15px;
+  resize: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+  background: rgba(124, 58, 237, 0.05);
+}
+
+.contact-form label {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 15px;
+  pointer-events: none;
+  background: transparent;
+  transition: 0.3s ease all;
+  padding: 0 4px;
+}
+
+.contact-form input:focus + label,
+.contact-form input:not(:placeholder-shown) + label,
+.contact-form textarea:focus + label,
+.contact-form textarea:not(:placeholder-shown) + label {
+  top: -10px;
+  font-size: 13px;
+  color: var(--accent);
+  background: var(--card);
+}
+
+.contact-form .form-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.contact-form .note {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.contact-form .btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.contact-form .btn:hover {
+  background: #5b21b6; /* slightly darker accent on hover */
+}
 
     footer{margin-top:50px;text-align:center;color:var(--muted);font-size:13px}
   </style>
@@ -190,25 +279,25 @@
 
     <!-- Contact Form Card -->
     <div class="card contact-form">
-      <form id="contactForm">
-        <div class="form-group">
-          <input type="text" id="name" placeholder=" " required>
-          <label for="name">Your Name</label>
-        </div>
-        <div class="form-group">
-          <input type="email" id="email" placeholder=" " required>
-          <label for="email">Your Email</label>
-        </div>
-        <div class="form-group">
-          <textarea id="message" rows="5" placeholder=" " required></textarea>
-          <label for="message">Your Message</label>
-        </div>
-        <div class="form-footer">
-          <button class="btn" type="submit">Send Message</button>
-          <span class="note">Or email me at <a href="mailto:vikas.email@example.com">vikas.email@example.com</a></span>
-        </div>
-      </form>
+  <form id="contactForm">
+    <div class="form-group">
+      <input type="text" id="name" placeholder=" " required>
+      <label for="name">Your Name</label>
     </div>
+    <div class="form-group">
+      <input type="email" id="email" placeholder=" " required>
+      <label for="email">Your Email</label>
+    </div>
+    <div class="form-group">
+      <textarea id="message" rows="5" placeholder=" " required></textarea>
+      <label for="message">Your Message</label>
+    </div>
+    <div class="form-footer">
+      <button class="btn" type="submit">Send Message</button>
+      <span class="note">Or email me at <a href="mailto:vikas.email@example.com">vikas.email@example.com</a></span>
+    </div>
+  </form>
+</div>
 
   </div>
 </section>
