@@ -173,21 +173,29 @@
       background: #5b21b6;
     }
 
-    /* Mobile Fixes */
+   /* Mobile Fixes */
 @media (max-width: 768px) {
   .container {
-    padding: 15px; /* adds breathing space from screen edge */
+    padding: 0 20px;  /* left and right spacing */
   }
 
   .contact-form {
-    margin: 20px auto;  /* center form only on mobile */
-    width: 100%;        /* take full width inside container */
+    margin: 20px 0;   /* keep it inside container, not centered */
+    width: 100%;      /* let it shrink inside padding */
+    box-sizing: border-box; /* ensures padding is respected */
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    box-sizing: border-box; /* prevent overflow beyond form */
   }
 
   #contact h2 {
-    text-align: center; /* center heading on small screens */
+    text-align: left; /* stays aligned left on mobile */
   }
 }
+
 
     footer{margin-top:50px;text-align:center;color:var(--muted);font-size:13px}
   </style>
