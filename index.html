@@ -121,7 +121,20 @@
     .icon-link{transition:transform .18s ease, color .18s}
     .icon-link:hover{transform:translateY(-3px);color:var(--accent-2)}
 
-  </style>
+  
+
+    /* --- Top bar style like the provided image --- */
+    .site-header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 12px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+    .brand-pill{background:rgba(255,255,255,0.03);padding:8px 14px;border-radius:18px;font-weight:700;display:inline-flex;align-items:center;gap:10px}
+    .brand-pill b{font-weight:700}
+    .main-nav{display:flex;gap:26px;align-items:center;justify-self:center}
+    .main-nav a{color:var(--muted);font-weight:600;padding:8px 6px;border-radius:8px}
+    .main-nav a:hover{color:var(--text);background:rgba(255,255,255,0.02)}
+    .header-actions{display:flex;align-items:center;gap:10px}
+    .icon-pill{width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(255,255,255,0.04)}
+    .icon-pill:hover{background:rgba(255,255,255,0.02)}
+
+</style>
 </head>
 <body>
   <div class="bg-shape"></div>
@@ -129,17 +142,23 @@
 
   <div class="container">
     <!-- HEADER -->
-    <header>
-      <div class="brand">
-        <h1><b>Sushravya B C</b></h1>
-        <p>📍 Channapatna,Karnataka,India</p>
-      </div>
+    <header class="site-header">
+      <div class="brand-pill" aria-hidden="false"><b>Sushravya B C</b></div>
 
-      <nav>
-        <a href="https://github.com/Sushravya40" target="_blank" class="icon-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank" class="icon-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <button class="theme-toggle" id="toggleTheme" aria-pressed="false">🌙 Dark</button>
+      <nav class="main-nav" role="navigation" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
       </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="toggleTheme" aria-pressed="false">🌙</button>
+        <a href="https://github.com/Sushravya40" target="_blank" class="icon-pill" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank" class="icon-pill" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
     </header>
 
     <!-- HERO -->
