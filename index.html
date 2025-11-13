@@ -8,16 +8,26 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root{
-      --bg-900: #071527; /* deep midnight blue */
-      --bg-800: #0b2133;
-      --card: rgba(255,255,255,0.035);
-      --glass-border: rgba(255,255,255,0.06);
-      --muted: #9fbadf;
-      --text: #eaf4ff;
-      --accent-1: #3b82f6; /* bright blue */
-      --accent-2: #06b6d4; /* teal for subtle blend */
-      --accent-grad: linear-gradient(135deg,var(--accent-1),#38bdf8,#06b6d4);
-      --glass-blur: 12px;
+      /* Soft pastel gradient theme (pink → lavender → aqua) */
+      --bg-900: #f4f7ff;   /* very light pastel blue */
+      --bg-800: #f2faff;
+
+      /* Glass background */
+      --card: rgba(255,255,255,0.45);
+      --glass-border: rgba(255,255,255,0.35);
+      --glass-blur: 18px;
+
+      /* Text + Muted */
+      --text: #334155;
+      --muted: #6b7280;
+
+      /* Accent colours (matching your sample image) */
+      --accent-1: #a78bfa;   /* soft lavender */
+      --accent-2: #67e8f9;   /* aqua pastel */
+      --accent-3: #f0abfc;   /* pastel pink */
+
+      /* Gradient mix for buttons + highlights */
+      --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
     }
 
     *{box-sizing:border-box}
