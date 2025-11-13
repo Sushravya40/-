@@ -148,16 +148,30 @@
 
 /* Dark mode overrides */
 [data-theme="dark"]{
-  --bg-900: #071527; /* deep midnight */
-  --bg-800: #0b2133;
-  --card: rgba(255,255,255,0.03);
-  --glass-border: rgba(255,255,255,0.06);
-  --text: #e6eef8;
-  --muted: #9fbadf;
-  --accent-1: #7c3aed; /* maintain a lavender hint */
-  --accent-2: #06b6d4;
-  --accent-3: #f0abfc;
-  --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
+  /* Blue Cyber Dark with Gold Shine */
+  --bg-900: #061421; /* deep blue */
+  --bg-800: #0d2233;
+
+  /* Glass background */
+  --card: rgba(255,255,255,0.05);
+  --glass-border: rgba(255,255,255,0.08);
+  --glass-blur: 20px;
+
+  /* Text */
+  --text: #eaf7ff;
+  --muted: #9db9c9;
+
+  /* Accents */
+  --accent-1: #38bdf8; /* cyan */
+  --accent-2: #06b6d4; /* bright aqua */
+
+  /* Gold Shine Accent */
+  --accent-gold: #f5c542; /* gold */
+  --accent-gold-soft: #f8e9a1; /* soft shine */
+
+  /* Gradient accents */
+  --accent-grad: linear-gradient(135deg, var(--accent-gold), var(--accent-1), var(--accent-2));
+  --accent-gold-grad: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-soft));
 }
 
 </style>
