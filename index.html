@@ -41,6 +41,7 @@
       -moz-osx-font-smoothing:grayscale;
       line-height:1.5;
       padding:36px 20px;
+      transition:background .35s ease,color .25s ease;
     }
 
     a{color:var(--accent-1);text-decoration:none}
@@ -50,14 +51,104 @@
     .bg-shape{position:fixed;right:-120px;top:-80px;width:420px;height:420px;pointer-events:none;opacity:0.12;filter:blur(40px);background:radial-gradient(circle at 30% 30%, #7c3aed, transparent 40%);transform:rotate(12deg)}
     .bg-shape-2{position:fixed;left:-160px;bottom:-120px;width:500px;height:500px;pointer-events:none;opacity:0.08;filter:blur(60px);background:radial-gradient(circle at 70% 70%, #06b6d4, transparent 40%)}
 
-    header{display:flex;justify-content:space-between;align-items:center;padding:8px 0}
-    .brand h1{margin:0;font-size:20px;font-weight:700}
-    .brand p{margin:4px 0 0;color:var(--muted);font-size:13px}
-    nav{display:flex;align-items:center;gap:12px}
-    .icon-link{font-size:18px;color:var(--text);opacity:0.9}
-    .theme-toggle{cursor:pointer;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text);font-size:14px}
+    /* ---------- HEADER (buttons) ---------- */
+    .site-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+    }
 
-    /* SPLIT HERO (glass) */
+    /* Brand as a button */
+    .brand-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 16px;
+      border-radius:12px;
+      background:transparent;
+      border:1px solid rgba(0,0,0,0.06);
+      font-weight:800;
+      color:var(--text);
+      cursor:pointer;
+      text-decoration:none;
+      transition:box-shadow .18s, transform .12s, border-color .12s;
+    }
+    .brand-btn:hover{ transform:translateY(-3px); box-shadow:0 8px 18px rgba(59,130,246,0.04); border-color: rgba(59,130,246,0.12); }
+
+    /* Center nav area (keeps original links) */
+    .main-nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      justify-content:center;
+      flex:1;
+      margin:0 18px;
+    }
+    .main-nav a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:600;
+      color:var(--muted);
+      border:1px solid rgba(0,0,0,0.06);
+      background:transparent;
+      transition:all .18s ease;
+      text-decoration:none;
+    }
+    .main-nav a:hover{
+      color:var(--text);
+      border-color: rgba(59,130,246,0.18);
+      transform:translateY(-3px);
+      box-shadow:0 8px 18px rgba(59,130,246,0.04);
+    }
+
+    /* Right action buttons */
+    .header-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .action-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:10px;
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.04);
+      color:var(--text);
+      cursor:pointer;
+      transition:transform .12s, box-shadow .18s, background .12s;
+      text-decoration:none;
+      font-weight:600;
+    }
+    .action-btn:hover{ transform:translateY(-3px); background: rgba(255,255,255,0.02); box-shadow:0 8px 18px rgba(59,130,246,0.04); }
+
+    .icon-pill{ width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--text); }
+
+    /* small screens - collapse nav */
+    @media (max-width:1000px){
+      .main-nav{ display:none; }
+    }
+
+    /* dark mode header tweaks */
+    [data-theme="dark"] .site-header{
+      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    [data-theme="dark"] .brand-btn{ border-color: rgba(255,255,255,0.06); box-shadow: 0 6px 18px rgba(3,10,20,0.5); color: var(--text); }
+    [data-theme="dark"] .main-nav a{ border-color: rgba(255,255,255,0.03); color: var(--muted); }
+    [data-theme="dark"] .action-btn, [data-theme="dark"] .icon-pill{ border-color: rgba(255,255,255,0.04); background: rgba(255,255,255,0.02); color: var(--text); }
+
+    /* --- keep rest of the styles unchanged --- */
     .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:22px}
 
     .glass{background:var(--card);border-radius:14px;padding:20px;backdrop-filter:blur(var(--glass-blur)) saturate(120%);border:1px solid var(--glass-border);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
@@ -69,33 +160,27 @@
     .btn{padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent-1), #9333ea);color:#fff;font-weight:600;border:none;box-shadow:0 6px 20px rgba(124,58,237,0.18)}
     .contact-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(124,58,237,0.12);color:var(--text);font-weight:600}
 
-    /* hero right image card */
     .hero-right{display:flex;justify-content:center}
     .photo-wrap{width:100%;max-width:360px;border-radius:14px;overflow:hidden;padding:8px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.05);box-shadow:0 12px 40px rgba(2,6,23,0.6);position:relative}
     .photo-wrap::after{content:'';position:absolute;inset:0;border-radius:inherit;padding:2px;pointer-events:none;background:linear-gradient(135deg, rgba(124,58,237,0.08), rgba(6,182,212,0.06));mix-blend-mode:screen}
     .photo-wrap img{display:block;width:100%;height:100%;object-fit:cover;border-radius:10px;transform:translateZ(0);transition:transform .45s ease, box-shadow .45s ease}
     .photo-wrap img:hover{transform:scale(1.03)}
 
-    /* SECTIONS */
     .card{margin-top:18px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(8px)}
     .section-title{margin:28px 0 12px;font-size:20px}
 
-    /* Education grid */
     .edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
     .edu-box{padding:16px;border-radius:10px;border-left:4px solid transparent;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
     .edu-box h3{margin:0}
     .edu-box p{margin:6px 0 0;color:var(--muted);font-size:14px}
     .edu-box.full-width{grid-column:1 / -1}
 
-    /* Projects */
     .projects-grid{display:grid;grid-template-columns:1fr;gap:16px}
     .project-box{padding:14px;border-radius:10px;border-left:4px solid rgba(124,58,237,0.18)}
 
-    /* skills */
     .skills-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
     .skill{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(124,58,237,0.08), rgba(6,182,212,0.03));color:var(--text);font-weight:600;font-size:13px}
 
-    /* contact */
     .contact-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
     .contact-form{max-width:720px}
     .contact-container{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
@@ -109,7 +194,6 @@
 
     footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;padding-bottom:22px}
 
-    /* small screens */
     @media (max-width:1000px){
       .hero{grid-template-columns:1fr;gap:18px}
       .hero-right{order:2}
@@ -124,47 +208,7 @@
       header{gap:8px}
     }
 
-    /* micro interactions */
-    .icon-link{transition:transform .18s ease, color .18s}
-    .icon-link:hover{transform:translateY(-3px);color:var(--accent-2)}
-
-  
-
-    /* --- Top bar style like the provided image --- */
-    .site-header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 12px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
-    .brand-pill{background:rgba(255,255,255,0.03);padding:8px 14px;border-radius:18px;font-weight:700;display:inline-flex;align-items:center;gap:10px}
-    .brand-pill b{font-weight:700}
-    .main-nav{display:flex;gap:26px;align-items:center;justify-self:center}
-    .main-nav a{color:var(--muted);font-weight:600;padding:8px 6px;border-radius:8px}
-    .main-nav a:hover{color:var(--text);background:rgba(255,255,255,0.02)}
-    .header-actions{display:flex;align-items:center;gap:10px}
-    .icon-pill{width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(255,255,255,0.04)}
-    .icon-pill:hover{background:rgba(255,255,255,0.02)}
-
-
-
-/* Dark mode overrides */
-[data-theme="dark"]{
-  /* Dark overrides tuned for Lavender + Blue Premium */
-  --bg-900: #071027; /* deep night navy */
-  --bg-800: #0b1730;
-
-  --card: rgba(255,255,255,0.04);
-  --glass-border: rgba(255,255,255,0.06);
-  --glass-blur: 18px;
-
-  --text: #e6eef8;
-  --muted: #9fb0d6;
-
-  --accent-1: #7c5cff; /* lavender-bright */
-  --accent-2: #3b82f6; /* blue */
-  --accent-3: #93c5fd; /* soft sky blue */
-
-  /* subtle cool highlight gradient */
-  --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
-}
-
-</style>
+  </style>
 </head>
 <body>
   <div class="bg-shape"></div>
@@ -172,21 +216,25 @@
 
   <div class="container">
     <!-- HEADER -->
-    <header class="site-header">
-      <div class="brand-pill" aria-hidden="false"><b>Sushravya B C</b></div>
+    <header class="site-header" role="banner">
+      <!-- Name as a button (left) -->
+      <a href="#about" class="brand-btn" role="button" aria-label="Go to about section">Sushravya B C</a>
 
+      <!-- Centered nav remains -->
       <nav class="main-nav" role="navigation" aria-label="Primary">
         <a href="#about">About</a>
+        <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <div class="header-actions">
-        <button class="theme-toggle" id="toggleTheme" aria-pressed="false">🌙</button>
-        <a href="https://github.com/Sushravya40" target="_blank" class="icon-pill" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank" class="icon-pill" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <!-- Right action buttons: theme, GitHub, LinkedIn -->
+      <div class="header-actions" role="group" aria-label="Header actions">
+        <button id="toggleTheme" class="action-btn" aria-pressed="false" title="Toggle theme">🌙</button>
+        <a href="https://github.com/Sushravya40" target="_blank" class="action-btn" aria-label="GitHub (opens in a new tab)"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank" class="action-btn" aria-label="LinkedIn (opens in a new tab)"><i class="fab fa-linkedin"></i></a>
       </div>
     </header>
 
