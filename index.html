@@ -22,17 +22,18 @@
       --page-padding: 36px 20px;
 
       /* header border colors (light) */
-      --header-border: rgba(15,20,36,0.06);
-      --header-border-ghost: rgba(15,20,36,0.04);
+      --header-border: rgba(15,20,36,0.08);         /* slightly thicker */
+      --header-border-ghost: rgba(15,20,36,0.05);
 
       /* Brand pill colors (light) */
-      --brand-bg: rgba(15,23,30,0.06);
+      --brand-bg: rgba(14,30,40,0.06);
       --brand-inner: rgba(255,255,255,0.04);
       --brand-border: rgba(255,255,255,0.06);
       --brand-text: #0f1724;
 
-      /* smoky glow */
-      --brand-smoke: rgba(14,30,40,0.12);
+      /* smoky glow tint (light) */
+      --brand-smoke: rgba(124,58,237,0.12); /* soft purple tint */
+      --brand-smoke-strong: rgba(59,130,246,0.06); /* secondary blue tint */
     }
 
     [data-theme="dark"]{
@@ -47,15 +48,17 @@
       --accent-2: #3b82f6;
       --accent-3: #93c5fd;
       --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
-      --header-border: rgba(255,255,255,0.06);
-      --header-border-ghost: rgba(255,255,255,0.03);
+
+      --header-border: rgba(255,255,255,0.08);
+      --header-border-ghost: rgba(255,255,255,0.04);
 
       /* dark brand pill tuning */
       --brand-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      --brand-inner: rgba(0,0,0,0.14);
-      --brand-border: rgba(255,255,255,0.06);
-      --brand-text: #e6eef8;
-      --brand-smoke: rgba(2,8,20,0.42);
+      --brand-inner: rgba(0,0,0,0.12);
+      --brand-border: rgba(255,255,255,0.08);
+      --brand-text: #fff;
+      --brand-smoke: rgba(124,58,237,0.18);  /* stronger purple smoke in dark */
+      --brand-smoke-strong: rgba(6,182,212,0.06); /* subtle teal */
     }
 
     *{box-sizing:border-box}
@@ -96,61 +99,62 @@
     }
 
     /* =========================
-       SMOKY BRAND PILL
-       - uses pseudo-elements for smoky glow + inner highlight
-       - works in both light & dark with variables
+       STRONGER SMOKY BRAND PILL
+       - stronger blur, purple tint, thicker border, brighter text
        ========================= */
     .brand-pill {
       position:relative;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:12px 24px;
+      padding:12px 26px;           /* slightly larger */
       border-radius:18px;
-      min-height:48px;
-      /* base surface */
+      min-height:50px;
       background: var(--brand-bg);
-      border: 1px solid var(--brand-border);
+      border: 1.5px solid var(--brand-border);  /* thicker border */
       color: var(--brand-text);
-      font-weight:800;
+      font-weight:900;            /* bolder */
       font-size:15px;
-      letter-spacing:0.2px;
+      letter-spacing:0.25px;
       text-decoration:none;
       z-index:40;
       transition: transform .14s ease, box-shadow .18s ease, border-color .12s ease;
       -webkit-backdrop-filter: blur(6px) saturate(120%);
       backdrop-filter: blur(6px) saturate(120%);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.18);
     }
 
-    /* smoky outer glow (diffuse) */
+    /* larger, colored smoky outer glow */
     .brand-pill::before{
       content: "";
       position: absolute;
-      inset: -6px;
-      border-radius: 20px;
-      background: radial-gradient(100% 60% at 20% 10%, rgba(255,255,255,0.02), transparent 20%), /* subtle top sheen */
-                  radial-gradient(60% 40% at 80% 90%, var(--brand-smoke), transparent 30%);
-      filter: blur(16px);
+      inset: -10px;
+      border-radius: 22px;
+      background:
+        radial-gradient(90% 50% at 20% 10%, rgba(255,255,255,0.02), transparent 18%),
+        radial-gradient(60% 40% at 85% 90%, var(--brand-smoke), transparent 30%),
+        radial-gradient(40% 30% at 10% 80%, var(--brand-smoke-strong), transparent 35%);
+      filter: blur(22px);   /* stronger blur */
       z-index: -2;
-      opacity: .95;
+      opacity: .98;
       pointer-events: none;
     }
 
-    /* inner soft bevel/highlight */
+    /* inner soft bevel/highlight for glassy feel */
     .brand-pill::after{
       content: "";
       position: absolute;
-      inset: 1px;
+      inset: 1.5px;
       border-radius: 16px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.04));
       z-index: -1;
       mix-blend-mode: overlay;
       pointer-events: none;
     }
 
     .brand-pill:hover{
-      transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(2,8,20,0.45);
+      transform: translateY(-5px);
+      box-shadow: 0 26px 60px rgba(2,8,20,0.5);
       border-color: var(--header-border-ghost);
     }
 
@@ -182,11 +186,12 @@
     .action-btn{
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
       padding:8px 10px; border-radius:10px; background:transparent;
-      border:1px solid var(--header-border); color:var(--text); cursor:pointer; transition:transform .12s, box-shadow .18s, background .12s;
-      text-decoration:none; font-weight:600;
+      border:1.25px solid var(--header-border); color:var(--text); cursor:pointer; transition:transform .12s, box-shadow .18s, background .12s;
+      text-decoration:none; font-weight:700;
     }
     .action-btn:hover{ transform:translateY(-3px); background: rgba(255,255,255,0.02); box-shadow:0 8px 18px rgba(59,130,246,0.04); border-color: var(--header-border-ghost); }
-    .icon-pill{ width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; background:transparent; border:1px solid var(--header-border); color:var(--text); transition:transform .12s, box-shadow .18s;}
+
+    .icon-pill{ width:42px; height:42px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; background:transparent; border:1.25px solid var(--header-border); color:var(--text); transition:transform .12s, box-shadow .18s;}
     .icon-pill:hover{ transform:translateY(-3px); background: rgba(255,255,255,0.02); }
 
     @media (max-width:1000px){ .main-nav{ display:none; } }
@@ -246,7 +251,7 @@
   <div class="container">
     <!-- HEADER -->
     <header class="site-header" role="banner">
-      <!-- Smoky brand pill -->
+      <!-- Strong smoky brand pill -->
       <a href="#about" class="brand-pill" aria-label="Sushravya B C">Sushravya B C</a>
 
       <!-- main nav -->
