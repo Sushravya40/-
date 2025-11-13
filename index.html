@@ -144,6 +144,22 @@
     .icon-pill{width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(255,255,255,0.04)}
     .icon-pill:hover{background:rgba(255,255,255,0.02)}
 
+
+
+/* Dark mode overrides */
+[data-theme="dark"]{
+  --bg-900: #071527; /* deep midnight */
+  --bg-800: #0b2133;
+  --card: rgba(255,255,255,0.03);
+  --glass-border: rgba(255,255,255,0.06);
+  --text: #e6eef8;
+  --muted: #9fbadf;
+  --accent-1: #7c3aed; /* maintain a lavender hint */
+  --accent-2: #06b6d4;
+  --accent-3: #f0abfc;
+  --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
+}
+
 </style>
 </head>
 <body>
@@ -307,18 +323,43 @@
     // current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Theme Toggle (dark / light) - keeps original texts and behavior
+    // Theme Toggle (dark / light) with persistence and prefers-color-scheme fallback
+    const THEME_KEY = 'sushravya_theme';
     const btn = document.getElementById('toggleTheme');
-    btn.addEventListener('click', () => {
-      if (document.body.getAttribute('data-theme') === "light") {
-        document.body.removeAttribute('data-theme');
-        btn.textContent = "🌙 Dark";
-        btn.setAttribute('aria-pressed','false');
-      } else {
-        document.body.setAttribute('data-theme', "light");
-        btn.textContent = "☀️ Light";
+
+    function applyTheme(theme){
+      if(theme === 'dark'){
+        document.documentElement.setAttribute('data-theme','dark');
+        btn.textContent = '☀️';
         btn.setAttribute('aria-pressed','true');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        btn.textContent = '🌙';
+        btn.setAttribute('aria-pressed','false');
       }
+    }
+
+    // Initial load: check saved preference, otherwise system preference
+    (function(){
+      try{
+        const saved = localStorage.getItem(THEME_KEY);
+        if(saved){
+          applyTheme(saved);
+        } else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+          applyTheme('dark');
+        } else {
+          applyTheme('light');
+        }
+      }catch(e){
+        applyTheme('light');
+      }
+    })();
+
+    btn.addEventListener('click', () => {
+      const currentIsDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const next = currentIsDark ? 'light' : 'dark';
+      applyTheme(next);
+      try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
     });
   </script>
 </body>
