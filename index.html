@@ -8,48 +8,48 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root{
-      /* Lavender + Blue Premium (light) */
       --bg-900: #f6f7ff;
       --bg-800: #eef3ff;
-
       --card: rgba(255,255,255,0.72);
       --glass-border: rgba(99,102,241,0.12);
       --glass-blur: 14px;
-
       --text: #0f1724;
       --muted: #6b7280;
-
       --accent-1: #6366f1;
       --accent-2: #3b82f6;
       --accent-3: #a78bfa;
-
       --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
       --page-padding: 36px 20px;
 
-      /* header border colors (light mode) */
+      /* header borders for light */
       --header-border: rgba(15,20,36,0.06);
-      --header-border-ghost: rgba(15,20,36,0.04);
+      --header-ghost: rgba(15,20,36,0.03);
+
+      /* brand pill colors (light) */
+      --brand-bg: rgba(14, 30, 40, 0.12);
+      --brand-border: rgba(255,255,255,0.06);
+      --brand-text: #0f1724;
     }
 
     [data-theme="dark"]{
       --bg-900: #071027;
       --bg-800: #0b1730;
-
       --card: rgba(255,255,255,0.04);
       --glass-border: rgba(255,255,255,0.06);
       --glass-blur: 18px;
-
       --text: #e6eef8;
       --muted: #9fb0d6;
-
       --accent-1: #7c5cff;
       --accent-2: #3b82f6;
       --accent-3: #93c5fd;
-
       --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
-
       --header-border: rgba(255,255,255,0.06);
-      --header-border-ghost: rgba(255,255,255,0.03);
+      --header-ghost: rgba(255,255,255,0.03);
+
+      /* brand pill colors (dark) */
+      --brand-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --brand-border: rgba(255,255,255,0.06);
+      --brand-text: #e6eef8;
     }
 
     *{box-sizing:border-box}
@@ -87,28 +87,34 @@
       border:1px solid rgba(255,255,255,0.03);
     }
 
-    /* Name as bordered button (visible in both modes) */
-    .brand-btn {
+    /* ---- Brand pill (matches your screenshot) ----
+       - bold white text on dark rounded rectangle
+       - visible subtle border and inner shadow
+       - scales slightly on hover
+    */
+    .brand-pill {
       display:inline-flex;
       align-items:center;
-      gap:10px;
-      padding:10px 16px;
-      border-radius:12px;
-      background:transparent;
-      border:1px solid var(--header-border);
+      justify-content:center;
+      padding:12px 22px;
+      border-radius:16px;
+      min-height:48px;
+      background: var(--brand-bg);
+      border:1px solid var(--brand-border);
+      color: var(--brand-text);
       font-weight:800;
-      color:var(--text);
-      cursor:pointer;
+      font-size:15px;
+      letter-spacing:0.2px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.12);
       text-decoration:none;
-      transition:box-shadow .18s, transform .12s, border-color .12s;
+      transition: transform .14s ease, box-shadow .18s ease;
     }
-    .brand-btn:hover{
-      transform:translateY(-3px);
-      box-shadow:0 8px 18px rgba(59,130,246,0.04);
-      border-color: var(--header-border-ghost);
+    .brand-pill:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(2,6,23,0.18);
     }
 
-    /* Nav (no borders) */
+    /* nav centered */
     .main-nav{
       display:flex;
       gap:18px;
@@ -136,7 +142,7 @@
       box-shadow:0 8px 18px rgba(59,130,246,0.04);
     }
 
-    /* Right actions (theme, github, linkedin) — bordered & visible */
+    /* right action buttons */
     .header-actions{
       display:flex;
       align-items:center;
@@ -161,20 +167,14 @@
       transform:translateY(-3px);
       background: rgba(255,255,255,0.02);
       box-shadow:0 8px 18px rgba(59,130,246,0.04);
-      border-color: var(--header-border-ghost);
+      border-color: var(--header-ghost);
     }
-
-    .icon-pill{
-      width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--header-border);color:var(--text);
-      transition:transform .12s, box-shadow .18s;
-    }
-    .icon-pill:hover{ transform:translateY(-3px); background: rgba(255,255,255,0.02); }
 
     @media (max-width:1000px){
       .main-nav{ display:none; }
     }
 
-    /* SPLIT HERO and remaining styles — unchanged content */
+    /* rest of site unchanged */
     .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:22px}
     .glass{background:var(--card);border-radius:14px;padding:20px;backdrop-filter:blur(var(--glass-blur)) saturate(120%);border:1px solid var(--glass-border);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
     .hero-left .intro{margin-bottom:12px}
@@ -239,10 +239,10 @@
   <div class="container">
     <!-- HEADER -->
     <header class="site-header" role="banner">
-      <!-- Name as bordered button -->
-      <a href="#about" class="brand-btn" role="button" aria-label="Go to about">Sushravya B C</a>
+      <!-- Brand pill styled like screenshot -->
+      <a href="#about" class="brand-pill" aria-label="Sushravya B C">Sushravya B C</a>
 
-      <!-- Center nav -->
+      <!-- main nav -->
       <nav class="main-nav" role="navigation" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
@@ -252,7 +252,6 @@
         <a href="#contact">Contact</a>
       </nav>
 
-      <!-- Right action buttons: theme, GitHub, LinkedIn (all bordered) -->
       <div class="header-actions" role="group" aria-label="Header actions">
         <button id="toggleTheme" class="action-btn" aria-pressed="false" title="Toggle theme">🌙</button>
         <a href="https://github.com/Sushravya40" target="_blank" class="action-btn" aria-label="GitHub (opens in new tab)"><i class="fab fa-github"></i></a>
@@ -392,10 +391,10 @@
   </div>
 
   <script>
-    // Set current year
+    // current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Theme persistence
+    // Theme Toggle with persistence + prefers-color-scheme fallback
     const THEME_KEY = 'sushravya_theme';
     const toggleBtn = document.getElementById('toggleTheme');
 
@@ -411,7 +410,6 @@
       }
     }
 
-    // init: saved -> system preference -> light
     (function initTheme(){
       try{
         const saved = localStorage.getItem(THEME_KEY);
@@ -422,12 +420,11 @@
         } else {
           applyTheme('light');
         }
-      } catch(e){
+      }catch(e){
         applyTheme('light');
       }
     })();
 
-    // toggle handler
     if(toggleBtn){
       toggleBtn.addEventListener('click', () => {
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
