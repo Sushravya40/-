@@ -9,19 +9,19 @@
   <style>
     :root{
       /* Lavender + Blue Premium (light) */
-      --bg-900: #f6f7ff;   /* very soft lavender-blue */
+      --bg-900: #f6f7ff;
       --bg-800: #eef3ff;
 
       --card: rgba(255,255,255,0.72);
       --glass-border: rgba(99,102,241,0.12);
       --glass-blur: 14px;
 
-      --text: #0f1724; /* dark slate */
-      --muted: #6b7280; /* muted grey */
+      --text: #0f1724;
+      --muted: #6b7280;
 
-      --accent-1: #6366f1; /* indigo-500 (lavender-blue) */
-      --accent-2: #3b82f6; /* blue-500 */
-      --accent-3: #a78bfa; /* soft lavender */
+      --accent-1: #6366f1;
+      --accent-2: #3b82f6;
+      --accent-3: #a78bfa;
 
       --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
       --page-padding: 36px 20px;
@@ -31,9 +31,8 @@
       --header-border-ghost: rgba(15,20,36,0.04);
     }
 
-    /* Dark-mode variables */
     [data-theme="dark"]{
-      --bg-900: #071027; /* deep night navy */
+      --bg-900: #071027;
       --bg-800: #0b1730;
 
       --card: rgba(255,255,255,0.04);
@@ -43,13 +42,12 @@
       --text: #e6eef8;
       --muted: #9fb0d6;
 
-      --accent-1: #7c5cff; /* lavender-bright */
-      --accent-2: #3b82f6; /* blue */
-      --accent-3: #93c5fd; /* soft sky blue */
+      --accent-1: #7c5cff;
+      --accent-2: #3b82f6;
+      --accent-3: #93c5fd;
 
       --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
 
-      /* header border color in dark mode - slightly lighter for visibility */
       --header-border: rgba(255,255,255,0.06);
       --header-border-ghost: rgba(255,255,255,0.03);
     }
@@ -67,18 +65,17 @@
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.5;
-      padding:36px 20px;
+      padding:var(--page-padding);
       transition:background .35s ease,color .25s ease;
     }
 
     a{color:var(--accent-1);text-decoration:none}
     .container{max-width:1100px;margin:0 auto}
 
-    /* subtle floating shapes */
     .bg-shape{position:fixed;right:-120px;top:-80px;width:420px;height:420px;pointer-events:none;opacity:0.12;filter:blur(40px);background:radial-gradient(circle at 30% 30%, #7c3aed, transparent 40%);transform:rotate(12deg)}
     .bg-shape-2{position:fixed;left:-160px;bottom:-120px;width:500px;height:500px;pointer-events:none;opacity:0.08;filter:blur(60px);background:radial-gradient(circle at 70% 70%, #06b6d4, transparent 40%)}
 
-    /* ---------- HEADER (only name + github + linkedin + theme have borders) ---------- */
+    /* HEADER */
     .site-header{
       display:flex;
       align-items:center;
@@ -90,7 +87,7 @@
       border:1px solid rgba(255,255,255,0.03);
     }
 
-    /* Brand as a bordered button */
+    /* Name as bordered button (visible in both modes) */
     .brand-btn {
       display:inline-flex;
       align-items:center;
@@ -111,7 +108,7 @@
       border-color: var(--header-border-ghost);
     }
 
-    /* Center nav: remove borders (clean) */
+    /* Nav (no borders) */
     .main-nav{
       display:flex;
       gap:18px;
@@ -131,7 +128,7 @@
       background:transparent;
       transition:all .18s ease;
       text-decoration:none;
-      border: none; /* <-- removed border for nav links */
+      border: none;
     }
     .main-nav a:hover{
       color:var(--text);
@@ -139,7 +136,7 @@
       box-shadow:0 8px 18px rgba(59,130,246,0.04);
     }
 
-    /* Right action buttons: theme, github, linkedin - bordered and visible */
+    /* Right actions (theme, github, linkedin) — bordered & visible */
     .header-actions{
       display:flex;
       align-items:center;
@@ -167,23 +164,19 @@
       border-color: var(--header-border-ghost);
     }
 
-    /* icon-only pill (keeps same visual but with visible border) */
     .icon-pill{
       width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--header-border);color:var(--text);
       transition:transform .12s, box-shadow .18s;
     }
     .icon-pill:hover{ transform:translateY(-3px); background: rgba(255,255,255,0.02); }
 
-    /* make sure nav collapse hides center links on narrow screens */
     @media (max-width:1000px){
       .main-nav{ display:none; }
     }
 
-    /* keep rest of the site unchanged below */
+    /* SPLIT HERO and remaining styles — unchanged content */
     .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:22px}
-
     .glass{background:var(--card);border-radius:14px;padding:20px;backdrop-filter:blur(var(--glass-blur)) saturate(120%);border:1px solid var(--glass-border);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
-
     .hero-left .intro{margin-bottom:12px}
     .hero-left h2{margin:0;font-size:30px;line-height:1.05}
     .hero-left p{color:var(--muted);margin-top:10px}
@@ -232,7 +225,6 @@
       .container{padding:0 12px}
       .photo-wrap{max-width:100%}
     }
-
     @media (max-width:480px){
       .hero-left h2{font-size:22px}
       .skill{font-size:13px;padding:6px 10px}
@@ -241,16 +233,16 @@
   </style>
 </head>
 <body>
-  <div class="bg-shape"></div>
-  <div class="bg-shape-2"></div>
+  <div class="bg-shape" aria-hidden="true"></div>
+  <div class="bg-shape-2" aria-hidden="true"></div>
 
   <div class="container">
     <!-- HEADER -->
     <header class="site-header" role="banner">
-      <!-- Name as a bordered button -->
+      <!-- Name as bordered button -->
       <a href="#about" class="brand-btn" role="button" aria-label="Go to about">Sushravya B C</a>
 
-      <!-- Centered nav (no borders there) -->
+      <!-- Center nav -->
       <nav class="main-nav" role="navigation" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
@@ -286,7 +278,6 @@
 
       <div class="hero-right">
         <div class="photo-wrap">
-          <!-- keep same src and alt as original -->
           <img src="your-photo.jpg" alt="Sushravya photo" onerror="this.style.opacity=0.85;">
         </div>
       </div>
@@ -401,49 +392,50 @@
   </div>
 
   <script>
-    // current year
+    // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Theme Toggle (dark / light) with persistence and prefers-color-scheme fallback
+    // Theme persistence
     const THEME_KEY = 'sushravya_theme';
-    const btn = document.getElementById('toggleTheme');
+    const toggleBtn = document.getElementById('toggleTheme');
 
     function applyTheme(theme){
       if(theme === 'dark'){
         document.documentElement.setAttribute('data-theme','dark');
-        // update any theme toggle text if you need
-        try { btn.textContent = '☀️'; } catch(e){}
-        btn && btn.setAttribute('aria-pressed','true');
+        if(toggleBtn) toggleBtn.textContent = '☀️';
+        if(toggleBtn) toggleBtn.setAttribute('aria-pressed','true');
       } else {
         document.documentElement.removeAttribute('data-theme');
-        try { btn.textContent = '🌙'; } catch(e){}
-        btn && btn.setAttribute('aria-pressed','false');
+        if(toggleBtn) toggleBtn.textContent = '🌙';
+        if(toggleBtn) toggleBtn.setAttribute('aria-pressed','false');
       }
     }
 
-    // Initial load: check saved preference, otherwise system preference
-    (function(){
+    // init: saved -> system preference -> light
+    (function initTheme(){
       try{
         const saved = localStorage.getItem(THEME_KEY);
-        if(saved){
+        if(saved === 'dark' || saved === 'light'){
           applyTheme(saved);
         } else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
           applyTheme('dark');
         } else {
           applyTheme('light');
         }
-      }catch(e){
+      } catch(e){
         applyTheme('light');
       }
     })();
 
-    // Toggle button (keeps original ID and behavior)
-    btn && btn.addEventListener('click', () => {
-      const currentIsDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const next = currentIsDark ? 'light' : 'dark';
-      applyTheme(next);
-      try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
-    });
+    // toggle handler
+    if(toggleBtn){
+      toggleBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const next = isDark ? 'light' : 'dark';
+        applyTheme(next);
+        try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+      });
+    }
   </script>
 </body>
 </html>
