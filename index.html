@@ -7,132 +7,126 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    :root {
-      --bg-1: #071028;      /* deep navy */
-      --bg-2: #0b1530;      /* slightly lighter */
+    :root{
+      --bg-900: #071027; /* deep navy */
+      --bg-800: #0b1220;
       --card: rgba(255,255,255,0.04);
-      --glass: rgba(255,255,255,0.03);
+      --glass-border: rgba(255,255,255,0.07);
+      --muted: #9bb0c8;
       --text: #e6eef8;
-      --muted: #a7b4c8;
-      --accent: #7c3aed;
-      --accent-2: #8b5cf6;
-      --accent-3: #c084fc;
-      --radius: 14px;
-      --maxw: 1100px;
-    }
-
-    [data-theme="light"]{
-      --bg-1: #f8fafc; --bg-2: #f1f5f9; --card: rgba(17,24,39,0.03); --glass: rgba(17,24,39,0.02);
-      --text: #0f1724; --muted:#6b7280; --accent:#7c3aed; --accent-2:#6d28d9; --accent-3:#c7a5ff;
+      --accent-1: #7c3aed; /* purple */
+      --accent-2: #06b6d4; /* teal */
+      --accent-grad: linear-gradient(135deg,var(--accent-1),#9333ea, #06b6d4);
+      --glass-blur: 10px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
-    body {
-      margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background: radial-gradient(1200px 500px at 10% 10%, rgba(124,58,237,0.06), transparent), linear-gradient(180deg,var(--bg-1),var(--bg-2));
-      color:var(--text);transition:background .35s,color .2s;line-height:1.5;-webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;padding-bottom:40px;
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,Arial,sans-serif;
+      background:
+        radial-gradient(600px 400px at 10% 10%, rgba(124,58,237,0.08), transparent 8%),
+        radial-gradient(500px 350px at 90% 80%, rgba(6,182,212,0.05), transparent 10%),
+        var(--bg-900);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:36px 20px;
     }
 
-    a{color:var(--accent);text-decoration:none}
-    .container{max-width:var(--maxw);margin:0 auto;padding:36px 22px}
+    a{color:var(--accent-1);text-decoration:none}
+    .container{max-width:1100px;margin:0 auto}
 
-    /* Header */
-    header{display:flex;justify-content:space-between;align-items:center;gap:20px}
-    .brand h1{margin:0;font-size:20px;font-weight:800;letter-spacing:0.2px}
-    .brand p{margin:3px 0 0;font-size:13px;color:var(--muted)}
+    /* subtle floating shapes */
+    .bg-shape{position:fixed;right:-120px;top:-80px;width:420px;height:420px;pointer-events:none;opacity:0.12;filter:blur(40px);background:radial-gradient(circle at 30% 30%, #7c3aed, transparent 40%);transform:rotate(12deg)}
+    .bg-shape-2{position:fixed;left:-160px;bottom:-120px;width:500px;height:500px;pointer-events:none;opacity:0.08;filter:blur(60px);background:radial-gradient(circle at 70% 70%, #06b6d4, transparent 40%)}
 
+    header{display:flex;justify-content:space-between;align-items:center;padding:8px 0}
+    .brand h1{margin:0;font-size:20px;font-weight:700}
+    .brand p{margin:4px 0 0;color:var(--muted);font-size:13px}
     nav{display:flex;align-items:center;gap:12px}
-    .icon-link{font-size:20px;color:var(--text);opacity:0.95}
-    .icon-link:hover{transform:translateY(-2px)}
-    .theme-toggle{cursor:pointer;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,rgba(255,255,255,0.03),transparent);border:1px solid rgba(255,255,255,0.04);font-size:13px;color:var(--text)}
+    .icon-link{font-size:18px;color:var(--text);opacity:0.9}
+    .theme-toggle{cursor:pointer;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text);font-size:14px}
 
-    /* HERO */
-    .hero{margin-top:26px;display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:center}
-    .hero-left{padding:18px 12px}
-    .hero h2{margin:0;font-size:30px;font-weight:800}
-    .hero p{color:var(--muted);margin-top:10px;max-width:70ch}
+    /* SPLIT HERO (glass) */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:22px}
 
+    .glass{background:var(--card);border-radius:14px;padding:20px;backdrop-filter:blur(var(--glass-blur)) saturate(120%);border:1px solid var(--glass-border);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+
+    .hero-left .intro{margin-bottom:12px}
+    .hero-left h2{margin:0;font-size:30px;line-height:1.05}
+    .hero-left p{color:var(--muted);margin-top:10px}
     .hero-buttons{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;font-weight:700;border:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 22px rgba(124,58,237,0.12)}
-    .btn-outline{background:transparent;border:1px solid rgba(124,58,237,0.12);color:var(--accent);padding:10px 14px;border-radius:12px;font-weight:700}
+    .btn{padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent-1), #9333ea);color:#fff;font-weight:600;border:none;box-shadow:0 6px 20px rgba(124,58,237,0.18)}
+    .contact-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(124,58,237,0.12);color:var(--text);font-weight:600}
 
-    .hero-right{position:relative}
-    .hero-portrait{
-      width:100%;border-radius:20px;display:block;object-fit:cover;overflow:hidden;padding:6px;background:linear-gradient(135deg,var(--accent),var(--accent-3));box-shadow:0 14px 40px rgba(2,6,23,0.6);
-      transition:transform .45s ease,box-shadow .45s ease
-    }
-    .hero-portrait img{display:block;width:100%;height:100%;border-radius:14px;object-fit:cover}
-    .hero-portrait:hover{transform:translateY(-6px) scale(1.01)}
+    /* hero right image card */
+    .hero-right{display:flex;justify-content:center}
+    .photo-wrap{width:100%;max-width:360px;border-radius:14px;overflow:hidden;padding:8px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.05);box-shadow:0 12px 40px rgba(2,6,23,0.6);position:relative}
+    .photo-wrap::after{content:'';position:absolute;inset:0;border-radius:inherit;padding:2px;pointer-events:none;background:linear-gradient(135deg, rgba(124,58,237,0.08), rgba(6,182,212,0.06));mix-blend-mode:screen}
+    .photo-wrap img{display:block;width:100%;height:100%;object-fit:cover;border-radius:10px;transform:translateZ(0);transition:transform .45s ease, box-shadow .45s ease}
+    .photo-wrap img:hover{transform:scale(1.03)}
 
-    /* Decorative blob */
-    .blob{
-      position:absolute;right:-40px;top:-40px;width:200px;height:200px;filter:blur(24px);opacity:0.15;background:radial-gradient(circle at 30% 30%,var(--accent),transparent 40%),radial-gradient(circle at 70% 70%,var(--accent-3),transparent 30%);border-radius:40%;pointer-events:none
-    }
-
-    /* small glass card under hero */
-    .mini-card{margin-top:14px;padding:12px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.03);backdrop-filter: blur(6px);display:inline-flex;gap:12px;align-items:center}
-    .mini-card .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 6px 18px rgba(124,58,237,0.14)}
-
-    /* Sections */
-    .section{margin-top:28px}
-    .section-title{margin:0 0 10px;font-size:20px;font-weight:700}
-    .card{background:var(--glass);padding:18px;border-radius:12px;margin-top:8px;border:1px solid rgba(255,255,255,0.03)}
+    /* SECTIONS */
+    .card{margin-top:18px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(8px)}
+    .section-title{margin:28px 0 12px;font-size:20px}
 
     /* Education grid */
-    .edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .edu-box{background:transparent;padding:16px;border-radius:10px;border-left:4px solid var(--accent);color:var(--text)}
+    .edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .edu-box{padding:16px;border-radius:10px;border-left:4px solid transparent;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+    .edu-box h3{margin:0}
+    .edu-box p{margin:6px 0 0;color:var(--muted);font-size:14px}
     .edu-box.full-width{grid-column:1 / -1}
 
     /* Projects */
-    .projects-grid{display:grid;grid-template-columns:1fr;gap:18px}
-    .project-box{padding:16px;border-radius:12px;border-left:4px solid var(--accent);background:transparent}
-    .project-links a{margin-right:8px}
+    .projects-grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .project-box{padding:14px;border-radius:10px;border-left:4px solid rgba(124,58,237,0.18)}
 
-    /* Skills */
+    /* skills */
     .skills-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-    .skill{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg,rgba(124,58,237,0.08),rgba(124,58,237,0.04));color:var(--accent);font-weight:700;font-size:13px}
+    .skill{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(124,58,237,0.08), rgba(6,182,212,0.03));color:var(--text);font-weight:600;font-size:13px}
 
-    /* Contact */
+    /* contact */
     .contact-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
-    .contact-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;font-weight:700;text-decoration:none}
-
-    .contact-form{background:transparent;padding:22px;border-radius:16px;max-width:720px;border:1px solid rgba(255,255,255,0.03)}
+    .contact-form{max-width:720px}
     .contact-container{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
-    .contact-form input,.contact-form textarea{width:100%;padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);font-size:14px;outline:none}
-    .contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent);background:linear-gradient(90deg,rgba(124,58,237,0.03),transparent)}
-    .contact-form label{position:absolute;top:50%;left:14px;transform:translateY(-50%);color:var(--muted);pointer-events:none;padding:0 6px;transition:0.18s;font-size:14px}
-    .form-group{position:relative;margin-bottom:18px}
+    .contact-form input,.contact-form textarea{width:100%;padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);outline:none}
+    .contact-form input:focus,.contact-form textarea:focus{border-color:rgba(124,58,237,0.28);box-shadow:0 6px 20px rgba(124,58,237,0.06)}
+    .contact-form label{position:absolute;top:50%;left:14px;transform:translateY(-50%);color:var(--muted);pointer-events:none;padding:0 6px;transition:0.18s;font-size:14px;background:transparent}
 
+    .form-group{position:relative;margin-bottom:18px}
     .form-footer{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
     .note{font-size:13px;color:var(--muted)}
 
     footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;padding-bottom:22px}
 
-    /* Responsiveness */
-    @media (max-width:980px){
+    /* small screens */
+    @media (max-width:1000px){
       .hero{grid-template-columns:1fr;gap:18px}
       .hero-right{order:2}
       .edu-grid{grid-template-columns:1fr}
-      .container{padding:20px}
-      .hero h2{font-size:24px}
-    }
-    @media (max-width:480px){
-      .skill{font-size:13px;padding:6px 10px}
-      .theme-toggle{padding:8px}
+      .container{padding:0 12px}
+      .photo-wrap{max-width:100%}
     }
 
-    /* subtle entrance animation */
-    .fade-in{opacity:0;transform:translateY(8px);animation:fadeInUp .6s ease forwards}
-    .fade-in.delay-1{animation-delay:.06s}
-    .fade-in.delay-2{animation-delay:.12s}
-    .fade-in.delay-3{animation-delay:.18s}
-    @keyframes fadeInUp{to{opacity:1;transform:none}}
+    @media (max-width:480px){
+      .hero-left h2{font-size:22px}
+      .skill{font-size:13px;padding:6px 10px}
+      header{gap:8px}
+    }
+
+    /* micro interactions */
+    .icon-link{transition:transform .18s ease, color .18s}
+    .icon-link:hover{transform:translateY(-3px);color:var(--accent-2)}
 
   </style>
 </head>
 <body>
+  <div class="bg-shape"></div>
+  <div class="bg-shape-2"></div>
+
   <div class="container">
     <!-- HEADER -->
     <header>
@@ -150,40 +144,38 @@
 
     <!-- HERO -->
     <section class="hero" aria-label="Introduction">
-      <div class="hero-left fade-in delay-1">
-        <h2>Hello, I'm <b>Sushravya</b> 👋</h2>
-        <p>A passionate software developer and machine learning enthusiast. I enjoy building web apps, solving problems, and learning modern technologies. Looking for opportunities to contribute and grow in the IT industry.</p>
+      <div class="hero-left">
+        <div class="glass">
+          <div class="intro">
+            <h2>Hello, I'm <b>Sushravya</b> 👋</h2>
+            <p>A passionate software developer and machine learning enthusiast. I enjoy building web apps, solving problems, and learning modern technologies. Looking for opportunities to contribute and grow in the IT industry.</p>
+          </div>
 
-        <div class="hero-buttons fade-in delay-2">
-          <a class="btn" href="#contact">Contact Me</a>
-          <a class="contact-btn" href="Sushravya_Resume.pdf" download><i class="fas fa-download"></i> Resume</a>
-        </div>
-
-        <div class="mini-card fade-in delay-3" style="margin-top:16px">
-          <div class="dot" aria-hidden="true"></div>
-          <div style="font-size:13px;color:var(--muted)">Currently building ML prototypes and web apps — open to internships & collaborations.</div>
+          <div class="hero-buttons">
+            <a class="btn" href="#contact">Contact Me</a>
+            <a class="contact-btn" href="Sushravya_Resume.pdf" download><i class="fas fa-download"></i> Resume</a>
+          </div>
         </div>
       </div>
 
-      <div class="hero-right fade-in delay-2">
-        <div class="hero-portrait" aria-hidden="false">
-          <!-- Replace only the image file path if you like. CONTENT / TEXT NOT CHANGED -->
-          <img src="your-photo.jpg" alt="Sushravya photo" onerror="this.style.opacity=0.9;this.style.filter='grayscale(5%)';this.style.objectPosition='center';">
+      <div class="hero-right">
+        <div class="photo-wrap">
+          <!-- keep same src and alt as original -->
+          <img src="your-photo.jpg" alt="Sushravya photo" onerror="this.style.opacity=0.85;">
         </div>
-        <div class="blob" aria-hidden="true"></div>
       </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="section fade-in delay-1" aria-labelledby="about-heading">
-      <h2 class="section-title" id="about-heading">About Me</h2>
+    <section id="about" class="section">
+      <h2 class="section-title">About Me</h2>
       <div class="card">
         <p>I build web applications and ML prototypes. I enjoy learning new tools and shipping clean, maintainable code. When I'm not coding, I explore design, read, and experiment with tech projects.</p>
       </div>
     </section>
 
     <!-- EDUCATION -->
-    <section id="education" class="section fade-in delay-2" aria-labelledby="education-heading">
+    <section id="education" class="section" aria-labelledby="education-heading">
       <h2 class="section-title" id="education-heading">Education</h2>
 
       <div class="edu-grid">
@@ -210,7 +202,7 @@
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="section fade-in delay-2" aria-labelledby="projects-heading">
+    <section id="projects" class="section" aria-labelledby="projects-heading">
       <h2 class="section-title" id="projects-heading">Projects</h2>
 
       <div class="projects-grid">
@@ -225,7 +217,7 @@
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="section fade-in delay-3" aria-labelledby="skills-heading">
+    <section id="skills" class="section" aria-labelledby="skills-heading">
       <h2 class="section-title" id="skills-heading">Skills</h2>
 
       <div class="card">
@@ -243,7 +235,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section fade-in delay-1" aria-labelledby="contact-heading">
+    <section id="contact" class="section" aria-labelledby="contact-heading">
       <h2 class="section-title" id="contact-heading">Contact</h2>
 
       <div class="contact-buttons" aria-hidden="false">
@@ -253,7 +245,7 @@
       </div>
 
       <div class="contact-container">
-        <div class="contact-form" role="form" aria-label="Contact form">
+        <div class="contact-form glass" role="form" aria-label="Contact form">
           <form id="contactForm" action="https://formspree.io/f/xgvlgzkg" method="POST" novalidate>
             <div class="form-group">
               <input type="text" name="name" id="name" placeholder=" " required>
@@ -279,35 +271,25 @@
     <footer>
       © <span id="year"></span> Sushravya B C — All rights reserved.
     </footer>
+
   </div>
 
   <script>
     // current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Theme Toggle (dark / light) - preserves semantics and stored preference
+    // Theme Toggle (dark / light) - keeps original texts and behavior
     const btn = document.getElementById('toggleTheme');
-    const root = document.body;
-    const stored = localStorage.getItem('sv_theme');
-    if(stored === 'light') { root.setAttribute('data-theme','light'); btn.textContent = '☀️ Light'; btn.setAttribute('aria-pressed','true'); }
-
     btn.addEventListener('click', () => {
       if (document.body.getAttribute('data-theme') === "light") {
         document.body.removeAttribute('data-theme');
         btn.textContent = "🌙 Dark";
         btn.setAttribute('aria-pressed','false');
-        localStorage.removeItem('sv_theme');
       } else {
         document.body.setAttribute('data-theme', "light");
         btn.textContent = "☀️ Light";
         btn.setAttribute('aria-pressed','true');
-        localStorage.setItem('sv_theme','light');
       }
-    });
-
-    // small accessibility: focus outlines for keyboard navigation
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Tab') document.documentElement.classList.add('show-focus');
     });
   </script>
 </body>
