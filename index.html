@@ -41,6 +41,7 @@
       -moz-osx-font-smoothing:grayscale;
       line-height:1.5;
       padding:36px 20px;
+      transition:background .35s ease,color .25s ease;
     }
 
     a{color:var(--accent-1);text-decoration:none}
@@ -128,8 +129,6 @@
     .icon-link{transition:transform .18s ease, color .18s}
     .icon-link:hover{transform:translateY(-3px);color:var(--accent-2)}
 
-  
-
     /* --- Top bar style like the provided image --- */
     .site-header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 12px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
     .brand-pill{background:rgba(255,255,255,0.03);padding:8px 14px;border-radius:18px;font-weight:700;display:inline-flex;align-items:center;gap:10px}
@@ -142,29 +141,85 @@
     .icon-pill:hover{background:rgba(255,255,255,0.02)}
 
 
+    /* Dark mode overrides */
+    [data-theme="dark"]{
+      /* Dark overrides tuned for Lavender + Blue Premium */
+      --bg-900: #071027; /* deep night navy */
+      --bg-800: #0b1730;
 
-/* Dark mode overrides */
-[data-theme="dark"]{
-  /* Dark overrides tuned for Lavender + Blue Premium */
-  --bg-900: #071027; /* deep night navy */
-  --bg-800: #0b1730;
+      --card: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.06);
+      --glass-blur: 18px;
 
-  --card: rgba(255,255,255,0.04);
-  --glass-border: rgba(255,255,255,0.06);
-  --glass-blur: 18px;
+      --text: #e6eef8;
+      --muted: #9fb0d6;
 
-  --text: #e6eef8;
-  --muted: #9fb0d6;
+      --accent-1: #7c5cff; /* lavender-bright */
+      --accent-2: #3b82f6; /* blue */
+      --accent-3: #93c5fd; /* soft sky blue */
 
-  --accent-1: #7c5cff; /* lavender-bright */
-  --accent-2: #3b82f6; /* blue */
-  --accent-3: #93c5fd; /* soft sky blue */
+      /* subtle cool highlight gradient */
+      --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
+    }
 
-  /* subtle cool highlight gradient */
-  --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
-}
+    /* -----------------------
+       New styles: name highlight & header icon glow in dark mode
+       ----------------------- */
 
-</style>
+    /* Animated name highlight */
+    .name-highlight {
+      position: relative;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      color: var(--text);
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.88));
+      z-index: 1;
+      transition: box-shadow .25s ease, transform .18s;
+    }
+
+    /* rotating gradient border behind name using pseudo-element */
+    .name-highlight::before {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 16px;
+      background: conic-gradient(from 0deg, var(--accent-3), var(--accent-1), var(--accent-2), var(--accent-3));
+      filter: blur(8px);
+      z-index: -1;
+      opacity: 0.95;
+      animation: rotate 6s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* subtler look on small screens */
+    @media (max-width:480px){
+      .name-highlight::before { opacity: 0.75; filter: blur(6px); inset: -4px; }
+      .name-highlight { padding: 4px 10px; font-size: 20px; }
+    }
+
+    /* Dark-mode: stronger glow and tint for header icons & toggle */
+    @keyframes pulse {
+      0% { box-shadow: 0 0 6px rgba(59,130,246,0.06); transform: translateY(0); }
+      50% { box-shadow: 0 0 18px rgba(59,130,246,0.18); transform: translateY(-3px); }
+      100% { box-shadow: 0 0 6px rgba(59,130,246,0.06); transform: translateY(0); }
+    }
+
+    [data-theme="dark"] .icon-pill,
+    [data-theme="dark"] .theme-toggle {
+      animation: pulse 2.4s infinite;
+      border-color: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+    }
+
+    /* keep everything else exactly as before */
+  </style>
 </head>
 <body>
   <div class="bg-shape"></div>
@@ -196,7 +251,8 @@
       <div class="hero-left">
         <div class="glass">
           <div class="intro">
-            <h2>Hello, I'm <b>Sushravya</b> 👋</h2>
+            <!-- Changed heading to only 'Sushravya' and wrapped with name-highlight -->
+            <h2><span class="name-highlight">Sushravya</span></h2>
             <p>A passionate software developer and machine learning enthusiast. I enjoy building web apps, solving problems, and learning modern technologies. Looking for opportunities to contribute and grow in the IT industry.</p>
           </div>
 
