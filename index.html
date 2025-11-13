@@ -21,14 +21,18 @@
       --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
       --page-padding: 36px 20px;
 
-      /* header borders for light */
+      /* header border colors (light) */
       --header-border: rgba(15,20,36,0.06);
-      --header-ghost: rgba(15,20,36,0.03);
+      --header-border-ghost: rgba(15,20,36,0.04);
 
-      /* brand pill colors (light) */
-      --brand-bg: rgba(14, 30, 40, 0.12);
+      /* Brand pill colors (light) */
+      --brand-bg: rgba(15,23,30,0.06);
+      --brand-inner: rgba(255,255,255,0.04);
       --brand-border: rgba(255,255,255,0.06);
       --brand-text: #0f1724;
+
+      /* smoky glow */
+      --brand-smoke: rgba(14,30,40,0.12);
     }
 
     [data-theme="dark"]{
@@ -44,12 +48,14 @@
       --accent-3: #93c5fd;
       --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
       --header-border: rgba(255,255,255,0.06);
-      --header-ghost: rgba(255,255,255,0.03);
+      --header-border-ghost: rgba(255,255,255,0.03);
 
-      /* brand pill colors (dark) */
+      /* dark brand pill tuning */
       --brand-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --brand-inner: rgba(0,0,0,0.14);
       --brand-border: rgba(255,255,255,0.06);
       --brand-text: #e6eef8;
+      --brand-smoke: rgba(2,8,20,0.42);
     }
 
     *{box-sizing:border-box}
@@ -85,36 +91,70 @@
       border-radius:12px;
       background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border:1px solid rgba(255,255,255,0.03);
+      position:relative;
+      overflow:visible;
     }
 
-    /* ---- Brand pill (matches your screenshot) ----
-       - bold white text on dark rounded rectangle
-       - visible subtle border and inner shadow
-       - scales slightly on hover
-    */
+    /* =========================
+       SMOKY BRAND PILL
+       - uses pseudo-elements for smoky glow + inner highlight
+       - works in both light & dark with variables
+       ========================= */
     .brand-pill {
+      position:relative;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:12px 22px;
-      border-radius:16px;
+      padding:12px 24px;
+      border-radius:18px;
       min-height:48px;
+      /* base surface */
       background: var(--brand-bg);
-      border:1px solid var(--brand-border);
+      border: 1px solid var(--brand-border);
       color: var(--brand-text);
       font-weight:800;
       font-size:15px;
       letter-spacing:0.2px;
-      box-shadow: 0 6px 18px rgba(2,6,23,0.12);
       text-decoration:none;
-      transition: transform .14s ease, box-shadow .18s ease;
-    }
-    .brand-pill:hover{
-      transform: translateY(-4px);
-      box-shadow: 0 14px 30px rgba(2,6,23,0.18);
+      z-index:40;
+      transition: transform .14s ease, box-shadow .18s ease, border-color .12s ease;
+      -webkit-backdrop-filter: blur(6px) saturate(120%);
+      backdrop-filter: blur(6px) saturate(120%);
     }
 
-    /* nav centered */
+    /* smoky outer glow (diffuse) */
+    .brand-pill::before{
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 20px;
+      background: radial-gradient(100% 60% at 20% 10%, rgba(255,255,255,0.02), transparent 20%), /* subtle top sheen */
+                  radial-gradient(60% 40% at 80% 90%, var(--brand-smoke), transparent 30%);
+      filter: blur(16px);
+      z-index: -2;
+      opacity: .95;
+      pointer-events: none;
+    }
+
+    /* inner soft bevel/highlight */
+    .brand-pill::after{
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
+      z-index: -1;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+
+    .brand-pill:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(2,8,20,0.45);
+      border-color: var(--header-border-ghost);
+    }
+
+    /* NAV & ACTIONS */
     .main-nav{
       display:flex;
       gap:18px;
@@ -136,45 +176,22 @@
       text-decoration:none;
       border: none;
     }
-    .main-nav a:hover{
-      color:var(--text);
-      transform:translateY(-3px);
-      box-shadow:0 8px 18px rgba(59,130,246,0.04);
-    }
+    .main-nav a:hover{ color:var(--text); transform:translateY(-3px); box-shadow:0 8px 18px rgba(59,130,246,0.04); }
 
-    /* right action buttons */
-    .header-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
+    .header-actions{ display:flex; align-items:center; gap:10px; }
     .action-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:10px;
-      background:transparent;
-      border:1px solid var(--header-border);
-      color:var(--text);
-      cursor:pointer;
-      transition:transform .12s, box-shadow .18s, background .12s;
-      text-decoration:none;
-      font-weight:600;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:8px 10px; border-radius:10px; background:transparent;
+      border:1px solid var(--header-border); color:var(--text); cursor:pointer; transition:transform .12s, box-shadow .18s, background .12s;
+      text-decoration:none; font-weight:600;
     }
-    .action-btn:hover{
-      transform:translateY(-3px);
-      background: rgba(255,255,255,0.02);
-      box-shadow:0 8px 18px rgba(59,130,246,0.04);
-      border-color: var(--header-ghost);
-    }
+    .action-btn:hover{ transform:translateY(-3px); background: rgba(255,255,255,0.02); box-shadow:0 8px 18px rgba(59,130,246,0.04); border-color: var(--header-border-ghost); }
+    .icon-pill{ width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; background:transparent; border:1px solid var(--header-border); color:var(--text); transition:transform .12s, box-shadow .18s;}
+    .icon-pill:hover{ transform:translateY(-3px); background: rgba(255,255,255,0.02); }
 
-    @media (max-width:1000px){
-      .main-nav{ display:none; }
-    }
+    @media (max-width:1000px){ .main-nav{ display:none; } }
 
-    /* rest of site unchanged */
+    /* rest of page unchanged */
     .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:22px}
     .glass{background:var(--card);border-radius:14px;padding:20px;backdrop-filter:blur(var(--glass-blur)) saturate(120%);border:1px solid var(--glass-border);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
     .hero-left .intro{margin-bottom:12px}
@@ -218,18 +235,8 @@
 
     footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;padding-bottom:22px}
 
-    @media (max-width:1000px){
-      .hero{grid-template-columns:1fr;gap:18px}
-      .hero-right{order:2}
-      .edu-grid{grid-template-columns:1fr}
-      .container{padding:0 12px}
-      .photo-wrap{max-width:100%}
-    }
-    @media (max-width:480px){
-      .hero-left h2{font-size:22px}
-      .skill{font-size:13px;padding:6px 10px}
-      header{gap:8px}
-    }
+    @media (max-width:1000px){ .hero{grid-template-columns:1fr;gap:18px} .hero-right{order:2} .edu-grid{grid-template-columns:1fr} .container{padding:0 12px} .photo-wrap{max-width:100%} }
+    @media (max-width:480px){ .hero-left h2{font-size:22px} .skill{font-size:13px;padding:6px 10px} header{gap:8px} }
   </style>
 </head>
 <body>
@@ -239,7 +246,7 @@
   <div class="container">
     <!-- HEADER -->
     <header class="site-header" role="banner">
-      <!-- Brand pill styled like screenshot -->
+      <!-- Smoky brand pill -->
       <a href="#about" class="brand-pill" aria-label="Sushravya B C">Sushravya B C</a>
 
       <!-- main nav -->
@@ -391,10 +398,10 @@
   </div>
 
   <script>
-    // current year
+    // set year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Theme Toggle with persistence + prefers-color-scheme fallback
+    // Theme Toggle persistence + prefers-color-scheme fallback
     const THEME_KEY = 'sushravya_theme';
     const toggleBtn = document.getElementById('toggleTheme');
 
