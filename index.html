@@ -25,6 +25,33 @@
 
       --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
       --page-padding: 36px 20px;
+
+      /* header border colors (light mode) */
+      --header-border: rgba(15,20,36,0.06);
+      --header-border-ghost: rgba(15,20,36,0.04);
+    }
+
+    /* Dark-mode variables */
+    [data-theme="dark"]{
+      --bg-900: #071027; /* deep night navy */
+      --bg-800: #0b1730;
+
+      --card: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.06);
+      --glass-blur: 18px;
+
+      --text: #e6eef8;
+      --muted: #9fb0d6;
+
+      --accent-1: #7c5cff; /* lavender-bright */
+      --accent-2: #3b82f6; /* blue */
+      --accent-3: #93c5fd; /* soft sky blue */
+
+      --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
+
+      /* header border color in dark mode - slightly lighter for visibility */
+      --header-border: rgba(255,255,255,0.06);
+      --header-border-ghost: rgba(255,255,255,0.03);
     }
 
     *{box-sizing:border-box}
@@ -51,7 +78,7 @@
     .bg-shape{position:fixed;right:-120px;top:-80px;width:420px;height:420px;pointer-events:none;opacity:0.12;filter:blur(40px);background:radial-gradient(circle at 30% 30%, #7c3aed, transparent 40%);transform:rotate(12deg)}
     .bg-shape-2{position:fixed;left:-160px;bottom:-120px;width:500px;height:500px;pointer-events:none;opacity:0.08;filter:blur(60px);background:radial-gradient(circle at 70% 70%, #06b6d4, transparent 40%)}
 
-    /* ---------- HEADER (buttons) ---------- */
+    /* ---------- HEADER (only name + github + linkedin + theme have borders) ---------- */
     .site-header{
       display:flex;
       align-items:center;
@@ -63,7 +90,7 @@
       border:1px solid rgba(255,255,255,0.03);
     }
 
-    /* Brand as a button */
+    /* Brand as a bordered button */
     .brand-btn {
       display:inline-flex;
       align-items:center;
@@ -71,16 +98,20 @@
       padding:10px 16px;
       border-radius:12px;
       background:transparent;
-      border:1px solid rgba(0,0,0,0.06);
+      border:1px solid var(--header-border);
       font-weight:800;
       color:var(--text);
       cursor:pointer;
       text-decoration:none;
       transition:box-shadow .18s, transform .12s, border-color .12s;
     }
-    .brand-btn:hover{ transform:translateY(-3px); box-shadow:0 8px 18px rgba(59,130,246,0.04); border-color: rgba(59,130,246,0.12); }
+    .brand-btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 8px 18px rgba(59,130,246,0.04);
+      border-color: var(--header-border-ghost);
+    }
 
-    /* Center nav area (keeps original links) */
+    /* Center nav: remove borders (clean) */
     .main-nav{
       display:flex;
       gap:18px;
@@ -97,19 +128,18 @@
       border-radius:12px;
       font-weight:600;
       color:var(--muted);
-      border:1px solid rgba(0,0,0,0.06);
       background:transparent;
       transition:all .18s ease;
       text-decoration:none;
+      border: none; /* <-- removed border for nav links */
     }
     .main-nav a:hover{
       color:var(--text);
-      border-color: rgba(59,130,246,0.18);
       transform:translateY(-3px);
       box-shadow:0 8px 18px rgba(59,130,246,0.04);
     }
 
-    /* Right action buttons */
+    /* Right action buttons: theme, github, linkedin - bordered and visible */
     .header-actions{
       display:flex;
       align-items:center;
@@ -123,32 +153,33 @@
       padding:8px 10px;
       border-radius:10px;
       background:transparent;
-      border:1px solid rgba(255,255,255,0.04);
+      border:1px solid var(--header-border);
       color:var(--text);
       cursor:pointer;
       transition:transform .12s, box-shadow .18s, background .12s;
       text-decoration:none;
       font-weight:600;
     }
-    .action-btn:hover{ transform:translateY(-3px); background: rgba(255,255,255,0.02); box-shadow:0 8px 18px rgba(59,130,246,0.04); }
+    .action-btn:hover{
+      transform:translateY(-3px);
+      background: rgba(255,255,255,0.02);
+      box-shadow:0 8px 18px rgba(59,130,246,0.04);
+      border-color: var(--header-border-ghost);
+    }
 
-    .icon-pill{ width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--text); }
+    /* icon-only pill (keeps same visual but with visible border) */
+    .icon-pill{
+      width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--header-border);color:var(--text);
+      transition:transform .12s, box-shadow .18s;
+    }
+    .icon-pill:hover{ transform:translateY(-3px); background: rgba(255,255,255,0.02); }
 
-    /* small screens - collapse nav */
+    /* make sure nav collapse hides center links on narrow screens */
     @media (max-width:1000px){
       .main-nav{ display:none; }
     }
 
-    /* dark mode header tweaks */
-    [data-theme="dark"] .site-header{
-      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.03);
-    }
-    [data-theme="dark"] .brand-btn{ border-color: rgba(255,255,255,0.06); box-shadow: 0 6px 18px rgba(3,10,20,0.5); color: var(--text); }
-    [data-theme="dark"] .main-nav a{ border-color: rgba(255,255,255,0.03); color: var(--muted); }
-    [data-theme="dark"] .action-btn, [data-theme="dark"] .icon-pill{ border-color: rgba(255,255,255,0.04); background: rgba(255,255,255,0.02); color: var(--text); }
-
-    /* --- keep rest of the styles unchanged --- */
+    /* keep rest of the site unchanged below */
     .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:22px}
 
     .glass{background:var(--card);border-radius:14px;padding:20px;backdrop-filter:blur(var(--glass-blur)) saturate(120%);border:1px solid var(--glass-border);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
@@ -207,7 +238,6 @@
       .skill{font-size:13px;padding:6px 10px}
       header{gap:8px}
     }
-
   </style>
 </head>
 <body>
@@ -217,10 +247,10 @@
   <div class="container">
     <!-- HEADER -->
     <header class="site-header" role="banner">
-      <!-- Name as a button (left) -->
-      <a href="#about" class="brand-btn" role="button" aria-label="Go to about section">Sushravya B C</a>
+      <!-- Name as a bordered button -->
+      <a href="#about" class="brand-btn" role="button" aria-label="Go to about">Sushravya B C</a>
 
-      <!-- Centered nav remains -->
+      <!-- Centered nav (no borders there) -->
       <nav class="main-nav" role="navigation" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
@@ -230,11 +260,11 @@
         <a href="#contact">Contact</a>
       </nav>
 
-      <!-- Right action buttons: theme, GitHub, LinkedIn -->
+      <!-- Right action buttons: theme, GitHub, LinkedIn (all bordered) -->
       <div class="header-actions" role="group" aria-label="Header actions">
         <button id="toggleTheme" class="action-btn" aria-pressed="false" title="Toggle theme">🌙</button>
-        <a href="https://github.com/Sushravya40" target="_blank" class="action-btn" aria-label="GitHub (opens in a new tab)"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank" class="action-btn" aria-label="LinkedIn (opens in a new tab)"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Sushravya40" target="_blank" class="action-btn" aria-label="GitHub (opens in new tab)"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank" class="action-btn" aria-label="LinkedIn (opens in new tab)"><i class="fab fa-linkedin"></i></a>
       </div>
     </header>
 
@@ -381,12 +411,13 @@
     function applyTheme(theme){
       if(theme === 'dark'){
         document.documentElement.setAttribute('data-theme','dark');
-        btn.textContent = '☀️';
-        btn.setAttribute('aria-pressed','true');
+        // update any theme toggle text if you need
+        try { btn.textContent = '☀️'; } catch(e){}
+        btn && btn.setAttribute('aria-pressed','true');
       } else {
         document.documentElement.removeAttribute('data-theme');
-        btn.textContent = '🌙';
-        btn.setAttribute('aria-pressed','false');
+        try { btn.textContent = '🌙'; } catch(e){}
+        btn && btn.setAttribute('aria-pressed','false');
       }
     }
 
@@ -406,7 +437,8 @@
       }
     })();
 
-    btn.addEventListener('click', () => {
+    // Toggle button (keeps original ID and behavior)
+    btn && btn.addEventListener('click', () => {
       const currentIsDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const next = currentIsDark ? 'light' : 'dark';
       applyTheme(next);
