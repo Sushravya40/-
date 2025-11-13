@@ -4,244 +4,257 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sushravya B C — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root{
-      --page-pad: 36px 20px;
-      --bg-900: #071027;
-      --bg-800: linear-gradient(180deg,#061020 0%, #071427 100%);
-      --panel: rgba(255,255,255,0.03);
-      --glass-border: rgba(255,255,255,0.04);
-      --muted: #9fb0d6;
-      --text: #e6eef8;
-      --accent-1: #7c5cff;
-      --accent-2: #06b6d4;
-      --accent-grad: linear-gradient(135deg,var(--accent-1),#9333ea,#06b6d4);
-
-      --brand-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      --brand-border: rgba(255,255,255,0.06);
-      --brand-text: #e6eef8;
-
-      --card-grad: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      --callout-bg: rgba(255,255,255,0.02);
-      --glass-blur: 10px;
-      --glass-elev: 0 12px 40px rgba(2,6,23,0.55);
-    }
-
-    [data-theme="light"]{
       --bg-900: #f6f7ff;
-      --bg-800: linear-gradient(180deg,#f6f7ff 0%, #eef3ff 100%);
-      --panel: rgba(15,23,42,0.02);
-      --glass-border: rgba(15,23,42,0.06);
-      --muted: #5b6b82;
+      --bg-800: #eef3ff;
+      --card: rgba(255,255,255,0.72);
+      --glass-border: rgba(99,102,241,0.12);
+      --glass-blur: 14px;
       --text: #0f1724;
+      --muted: #6b7280;
       --accent-1: #6366f1;
-      --accent-2: #06b6d4;
-      --accent-grad: linear-gradient(135deg,var(--accent-1),#9333ea,#06b6d4);
+      --accent-2: #3b82f6;
+      --accent-3: #a78bfa;
+      --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
+      --page-padding: 36px 20px;
+
+      /* header border colors (light) */
+      --header-border: rgba(15,20,36,0.08);         /* slightly thicker */
+      --header-border-ghost: rgba(15,20,36,0.05);
+
+      /* Brand pill colors (light) */
       --brand-bg: rgba(14,30,40,0.06);
+      --brand-inner: rgba(255,255,255,0.04);
       --brand-border: rgba(255,255,255,0.06);
       --brand-text: #0f1724;
-      --card-grad: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.68));
-      --callout-bg: rgba(99,102,241,0.06);
-      --glass-elev: 0 10px 30px rgba(2,6,23,0.06);
+
+      /* smoky glow tint (light) */
+      --brand-smoke: rgba(124,58,237,0.12); /* soft purple tint */
+      --brand-smoke-strong: rgba(59,130,246,0.06); /* secondary blue tint */
+    }
+
+    [data-theme="dark"]{
+      --bg-900: #071027;
+      --bg-800: #0b1730;
+      --card: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.06);
+      --glass-blur: 18px;
+      --text: #e6eef8;
+      --muted: #9fb0d6;
+      --accent-1: #7c5cff;
+      --accent-2: #3b82f6;
+      --accent-3: #93c5fd;
+      --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
+
+      --header-border: rgba(255,255,255,0.08);
+      --header-border-ghost: rgba(255,255,255,0.04);
+
+      /* dark brand pill tuning */
+      --brand-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --brand-inner: rgba(0,0,0,0.12);
+      --brand-border: rgba(255,255,255,0.08);
+      --brand-text: #fff;
+      --brand-smoke: rgba(124,58,237,0.18);  /* stronger purple smoke in dark */
+      --brand-smoke-strong: rgba(6,182,212,0.06); /* subtle teal */
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background: var(--bg-900);
+      font-family:'Inter',system-ui,Arial,sans-serif;
+      background:
+        radial-gradient(600px 400px at 10% 10%, rgba(124,58,237,0.08), transparent 8%),
+        radial-gradient(500px 350px at 90% 80%, rgba(6,182,212,0.05), transparent 10%),
+        var(--bg-900);
       color:var(--text);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-      padding:var(--page-pad);
+      line-height:1.5;
+      padding:var(--page-padding);
       transition:background .35s ease,color .25s ease;
-      background-image: var(--bg-800);
     }
-    .container{max-width:1100px;margin:0 auto}
-    a{color:var(--accent-1);text-decoration:none}
 
+    a{color:var(--accent-1);text-decoration:none}
+    .container{max-width:1100px;margin:0 auto}
+
+    .bg-shape{position:fixed;right:-120px;top:-80px;width:420px;height:420px;pointer-events:none;opacity:0.12;filter:blur(40px);background:radial-gradient(circle at 30% 30%, #7c3aed, transparent 40%);transform:rotate(12deg)}
+    .bg-shape-2{position:fixed;left:-160px;bottom:-120px;width:500px;height:500px;pointer-events:none;opacity:0.08;filter:blur(60px);background:radial-gradient(circle at 70% 70%, #06b6d4, transparent 40%)}
+
+    /* HEADER */
     .site-header{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:18px;
-      padding:14px;
+      padding:10px 12px;
       border-radius:12px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border:1px solid rgba(255,255,255,0.03);
-      margin-bottom:22px;
       position:relative;
+      overflow:visible;
     }
-    .brand-pill{
+
+    /* =========================
+       STRONGER SMOKY BRAND PILL
+       - stronger blur, purple tint, thicker border, brighter text
+       ========================= */
+    .brand-pill {
       position:relative;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:12px 26px;
-      border-radius:16px;
-      min-height:48px;
-      background:var(--brand-bg);
-      border:1.5px solid var(--brand-border);
-      color:var(--brand-text);
-      font-weight:900;
+      padding:12px 26px;           /* slightly larger */
+      border-radius:18px;
+      min-height:50px;
+      background: var(--brand-bg);
+      border: 1.5px solid var(--brand-border);  /* thicker border */
+      color: var(--brand-text);
+      font-weight:900;            /* bolder */
       font-size:15px;
-      letter-spacing:0.2px;
+      letter-spacing:0.25px;
       text-decoration:none;
       z-index:40;
       transition: transform .14s ease, box-shadow .18s ease, border-color .12s ease;
-      box-shadow: 0 8px 30px rgba(2,6,23,0.35);
+      -webkit-backdrop-filter: blur(6px) saturate(120%);
       backdrop-filter: blur(6px) saturate(120%);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.18);
     }
+
+    /* larger, colored smoky outer glow */
     .brand-pill::before{
-      content:"";
-      position:absolute; inset:-10px; border-radius:18px;
-      background: radial-gradient(60% 50% at 20% 10%, rgba(124,58,237,0.12), transparent 20%),
-                  radial-gradient(50% 40% at 80% 90%, rgba(6,182,212,0.06), transparent 20%);
-      filter: blur(22px);
-      z-index:-1;
-      opacity:.95;
-    }
-    .brand-pill:hover{ transform:translateY(-4px); box-shadow:0 20px 50px rgba(2,8,20,0.5) }
-
-    .main-nav{ display:flex; gap:22px; align-items:center; justify-content:center; flex:1; margin-left:22px; }
-    .main-nav a{ color:var(--muted); font-weight:600; padding:8px 12px; border-radius:8px; transition:all .18s }
-    .main-nav a:hover{ color:var(--text); background: rgba(255,255,255,0.02); transform:translateY(-3px) }
-
-    .header-actions{ display:flex; gap:10px; align-items:center }
-    .action-btn{ padding:9px 12px; border-radius:10px; background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--text); display:inline-flex; gap:8px; align-items:center }
-    .action-btn:hover{ transform:translateY(-3px) }
-
-    section{ margin-top:34px; }
-
-    h2.section-title{
-      font-size:20px;
-      margin:0 0 18px;
-      display:flex; align-items:center; gap:14px;
-      font-weight:800;
-    }
-    h2.section-title::before{
-      content:"";
-      display:inline-block;
-      width:42px; height:8px; border-radius:6px;
-      background: var(--accent-grad);
-      box-shadow:0 6px 20px rgba(124,58,237,0.12);
-      transform:translateY(-2px);
-    }
-    /* hide marker for Contact */
-    h2.section-title.no-marker::before{ display:none; }
-
-    /* big photo next to Contact heading (like hero photo) */
-    h2.section-title .contact-photo{
-      width:92px; height:64px; border-radius:12px; object-fit:cover; margin-right:12px; border:1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 8px 28px rgba(2,6,23,0.4);
-      flex-shrink:0;
+      content: "";
+      position: absolute;
+      inset: -10px;
+      border-radius: 22px;
+      background:
+        radial-gradient(90% 50% at 20% 10%, rgba(255,255,255,0.02), transparent 18%),
+        radial-gradient(60% 40% at 85% 90%, var(--brand-smoke), transparent 30%),
+        radial-gradient(40% 30% at 10% 80%, var(--brand-smoke-strong), transparent 35%);
+      filter: blur(22px);   /* stronger blur */
+      z-index: -2;
+      opacity: .98;
+      pointer-events: none;
     }
 
-    .about-card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid var(--glass-border);
+    /* inner soft bevel/highlight for glassy feel */
+    .brand-pill::after{
+      content: "";
+      position: absolute;
+      inset: 1.5px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.04));
+      z-index: -1;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+
+    .brand-pill:hover{
+      transform: translateY(-5px);
+      box-shadow: 0 26px 60px rgba(2,8,20,0.5);
+      border-color: var(--header-border-ghost);
+    }
+
+    /* NAV & ACTIONS */
+    .main-nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      justify-content:center;
+      flex:1;
+      margin:0 18px;
+    }
+    .main-nav a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
       border-radius:12px;
-      padding:26px;
-      backdrop-filter: blur(var(--glass-blur));
-      box-shadow: var(--glass-elev);
-    }
-    .about-card p{
-      margin:0;
+      font-weight:600;
       color:var(--muted);
-      font-size:16px;
-      line-height:1.8;
-      max-width:100%;
+      background:transparent;
+      transition:all .18s ease;
+      text-decoration:none;
+      border: none;
     }
+    .main-nav a:hover{ color:var(--text); transform:translateY(-3px); box-shadow:0 8px 18px rgba(59,130,246,0.04); }
 
-    .edu-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:20px; align-items:start }
-    .edu-card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
-      border-radius:12px;
-      padding:18px;
-      border:1px solid rgba(255,255,255,0.02);
-      box-shadow: 0 6px 18px rgba(2,6,23,0.34);
-      position:relative;
-      transition:transform .18s, box-shadow .18s;
+    .header-actions{ display:flex; align-items:center; gap:10px; }
+    .action-btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:8px 10px; border-radius:10px; background:transparent;
+      border:1.25px solid var(--header-border); color:var(--text); cursor:pointer; transition:transform .12s, box-shadow .18s, background .12s;
+      text-decoration:none; font-weight:700;
     }
-    .edu-card:hover{ transform:translateY(-6px); box-shadow: 0 18px 50px rgba(2,6,23,0.45) }
-    .edu-card h3{ margin:0 0 8px; font-size:16px }
-    .edu-card p{ margin:0; color:var(--muted); font-size:14px }
-    .edu-card::before{
-      content:"";
-      position:absolute;
-      left:-40px; top:-40px;
-      width:140px; height:140px; border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, rgba(124,58,237,0.06), transparent 30%);
-      filter: blur(30px);
-      pointer-events:none;
-      opacity:0.95;
-    }
-    .edu-full{ grid-column:1 / -1 }
+    .action-btn:hover{ transform:translateY(-3px); background: rgba(255,255,255,0.02); box-shadow:0 8px 18px rgba(59,130,246,0.04); border-color: var(--header-border-ghost); }
 
-    .projects-grid{ display:grid; grid-template-columns: 1fr; gap:18px }
-    .project-box{
-      display:flex; align-items:center; gap:16px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
-      border-radius:12px; padding:18px; border:1px solid rgba(255,255,255,0.02);
-      transition:transform .18s ease, box-shadow .18s ease;
-    }
-    .project-box:hover{ transform:translateY(-8px); box-shadow: 0 26px 60px rgba(2,6,23,0.48) }
-    .project-thumb{
-      min-width:84px; height:84px; border-radius:12px; background:var(--accent-grad); flex-shrink:0;
-      display:flex; align-items:center; justify-content:center; color:white; font-weight:800; box-shadow:0 8px 30px rgba(124,58,237,0.16);
-    }
-    .project-meta h3{ margin:0 0 8px; font-size:16px }
-    .project-meta p{ margin:0; color:var(--muted) }
+    .icon-pill{ width:42px; height:42px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; background:transparent; border:1.25px solid var(--header-border); color:var(--text); transition:transform .12s, box-shadow .18s;}
+    .icon-pill:hover{ transform:translateY(-3px); background: rgba(255,255,255,0.02); }
 
-    .skills-wrap{ display:flex; gap:22px; align-items:flex-start; flex-wrap:wrap }
-    .skill-chips{ display:flex; gap:10px; flex-wrap:wrap; max-width:520px }
-    .skill{ padding:8px 12px; border-radius:999px; font-weight:700; color:var(--text); background: linear-gradient(90deg, rgba(124,58,237,0.12), rgba(6,182,212,0.04)); font-size:13px; }
-    .skill-bars{ flex:1; min-width:260px }
-    .bar{ margin-bottom:12px }
-    .bar .label{ font-size:13px; color:var(--muted); margin-bottom:6px; display:flex; justify-content:space-between }
-    .bar .track{ height:10px; background: rgba(255,255,255,0.03); border-radius:999px; overflow:hidden; border:1px solid rgba(255,255,255,0.02) }
-    .bar .fill{ height:100%; width:60%; border-radius:999px; background:var(--accent-grad); transition:width .9s cubic-bezier(.2,.9,.2,1) }
+    @media (max-width:1000px){ .main-nav{ display:none; } }
 
-    .contact-grid{ display:grid; grid-template-columns: 1fr 360px; gap:22px; align-items:start }
-    .contact-form{ background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005)); padding:20px; border-radius:12px; border:1px solid rgba(255,255,255,0.02); box-shadow:0 12px 40px rgba(2,6,23,0.45) }
-    .contact-form .form-group{ position:relative; margin-bottom:16px }
-    .contact-form input, .contact-form textarea{ width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.03); background:transparent; color:var(--text); outline:none; font-size:14px }
-    .contact-form input:focus, .contact-form textarea:focus{ border-color: rgba(124,58,237,0.28); box-shadow:0 8px 30px rgba(124,58,237,0.06) }
-    .contact-form label{ position:absolute; left:14px; top:12px; pointer-events:none; color:var(--muted); font-size:13px; transition: all .14s }
-    .contact-form input:not(:placeholder-shown) + label, .contact-form textarea:not(:placeholder-shown) + label,
-    .contact-form input:focus + label, .contact-form textarea:focus + label{ transform: translateY(-18px); font-size:12px; color:var(--accent-1); background:transparent; padding:0 6px; }
+    /* rest of page unchanged */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:22px}
+    .glass{background:var(--card);border-radius:14px;padding:20px;backdrop-filter:blur(var(--glass-blur)) saturate(120%);border:1px solid var(--glass-border);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    .hero-left .intro{margin-bottom:12px}
+    .hero-left h2{margin:0;font-size:30px;line-height:1.05}
+    .hero-left p{color:var(--muted);margin-top:10px}
+    .hero-buttons{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent-1), #9333ea);color:#fff;font-weight:600;border:none;box-shadow:0 6px 20px rgba(124,58,237,0.18)}
+    .contact-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(124,58,237,0.12);color:var(--text);font-weight:600}
 
-    .contact-panel{
-      border-radius:12px; padding:20px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.02);
-      display:flex; flex-direction:column; gap:12px; justify-content:flex-start; align-items:flex-start;
-      box-shadow: 0 10px 30px rgba(2,6,23,0.36);
-    }
-    .contact-panel img{ width:100%; border-radius:10px; object-fit:cover; border:1px solid rgba(255,255,255,0.04); box-shadow:0 10px 30px rgba(2,6,23,0.32) }
+    .hero-right{display:flex;justify-content:center}
+    .photo-wrap{width:100%;max-width:360px;border-radius:14px;overflow:hidden;padding:8px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.05);box-shadow:0 12px 40px rgba(2,6,23,0.6);position:relative}
+    .photo-wrap::after{content:'';position:absolute;inset:0;border-radius:inherit;padding:2px;pointer-events:none;background:linear-gradient(135deg, rgba(124,58,237,0.08), rgba(6,182,212,0.06));mix-blend-mode:screen}
+    .photo-wrap img{display:block;width:100%;height:100%;object-fit:cover;border-radius:10px;transform:translateZ(0);transition:transform .45s ease, box-shadow .45s ease}
+    .photo-wrap img:hover{transform:scale(1.03)}
 
-    footer{ margin-top:40px; color:var(--muted); text-align:center; font-size:13px; padding-bottom:22px }
+    .card{margin-top:18px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(8px)}
+    .section-title{margin:28px 0 12px;font-size:20px}
 
-    @media (max-width:980px){
-      .edu-grid{ grid-template-columns: 1fr; }
-      .contact-grid{ grid-template-columns: 1fr; }
-      .skills-wrap{ flex-direction:column; gap:16px; }
-      h2.section-title .contact-photo{ display:none; }
-    }
+    .edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .edu-box{padding:16px;border-radius:10px;border-left:4px solid transparent;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+    .edu-box h3{margin:0}
+    .edu-box p{margin:6px 0 0;color:var(--muted);font-size:14px}
+    .edu-box.full-width{grid-column:1 / -1}
 
-    @media (max-width:540px){
-      .main-nav{ display:none; }
-      .brand-pill{ padding:10px 16px; font-size:14px }
-      .project-thumb{ min-width:64px; height:64px }
-    }
+    .projects-grid{display:grid;grid-template-columns:1fr;gap:16px}
+    .project-box{padding:14px;border-radius:10px;border-left:4px solid rgba(124,58,237,0.18)}
+
+    .skills-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .skill{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(124,58,237,0.08), rgba(6,182,212,0.03));color:var(--text);font-weight:600;font-size:13px}
+
+    .contact-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+    .contact-form{max-width:720px}
+    .contact-container{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+    .contact-form input,.contact-form textarea{width:100%;padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);outline:none}
+    .contact-form input:focus,.contact-form textarea:focus{border-color:rgba(124,58,237,0.28);box-shadow:0 6px 20px rgba(124,58,237,0.06)}
+    .contact-form label{position:absolute;top:50%;left:14px;transform:translateY(-50%);color:var(--muted);pointer-events:none;padding:0 6px;transition:0.18s;font-size:14px;background:transparent}
+
+    .form-group{position:relative;margin-bottom:18px}
+    .form-footer{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .note{font-size:13px;color:var(--muted)}
+
+    footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;padding-bottom:22px}
+
+    @media (max-width:1000px){ .hero{grid-template-columns:1fr;gap:18px} .hero-right{order:2} .edu-grid{grid-template-columns:1fr} .container{padding:0 12px} .photo-wrap{max-width:100%} }
+    @media (max-width:480px){ .hero-left h2{font-size:22px} .skill{font-size:13px;padding:6px 10px} header{gap:8px} }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="site-header" role="banner">
-      <a href="#about" class="brand-pill">Sushravya B C</a>
+  <div class="bg-shape" aria-hidden="true"></div>
+  <div class="bg-shape-2" aria-hidden="true"></div>
 
+  <div class="container">
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+      <!-- Strong smoky brand pill -->
+      <a href="#about" class="brand-pill" aria-label="Sushravya B C">Sushravya B C</a>
+
+      <!-- main nav -->
       <nav class="main-nav" role="navigation" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
@@ -253,112 +266,114 @@
 
       <div class="header-actions" role="group" aria-label="Header actions">
         <button id="toggleTheme" class="action-btn" aria-pressed="false" title="Toggle theme">🌙</button>
-        <a href="https://github.com/Sushravya40" target="_blank" class="action-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank" class="action-btn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Sushravya40" target="_blank" class="action-btn" aria-label="GitHub (opens in new tab)"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank" class="action-btn" aria-label="LinkedIn (opens in new tab)"><i class="fab fa-linkedin"></i></a>
       </div>
     </header>
 
+    <!-- HERO -->
     <section class="hero" aria-label="Introduction">
-      <div class="glass" style="border-radius:12px;padding:18px;">
-        <h1 style="margin:0 0 8px;font-size:26px;font-weight:800">Sushravya</h1>
-        <p style="margin:0;color:var(--muted)">A passionate software developer and machine learning enthusiast. I enjoy building web apps, solving problems, and learning modern technologies. Looking for opportunities to contribute and grow in the IT industry.</p>
-        <div style="margin-top:16px;display:flex;gap:10px">
-          <a class="btn" href="#contact" style="padding:10px 14px;border-radius:10px;background:var(--accent-grad);color:white;font-weight:700;text-decoration:none">Contact Me</a>
-          <a href="Sushravya_Resume.pdf" download class="action-btn" style="text-decoration:none"> <i class="fas fa-download"></i> Resume</a>
+      <div class="hero-left">
+        <div class="glass">
+          <div class="intro">
+            <h2>Hello, I'm <b>Sushravya</b> 👋</h2>
+            <p>A passionate software developer and machine learning enthusiast. I enjoy building web apps, solving problems, and learning modern technologies. Looking for opportunities to contribute and grow in the IT industry.</p>
+          </div>
+
+          <div class="hero-buttons">
+            <a class="btn" href="#contact">Contact Me</a>
+            <a class="contact-btn" href="Sushravya_Resume.pdf" download><i class="fas fa-download"></i> Resume</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="photo-wrap">
+          <img src="your-photo.jpg" alt="Sushravya photo" onerror="this.style.opacity=0.85;">
         </div>
       </div>
     </section>
 
-    <section id="about" class="section" aria-label="About section">
+    <!-- ABOUT -->
+    <section id="about" class="section">
       <h2 class="section-title">About Me</h2>
-      <div class="about-card" aria-live="polite">
+      <div class="card">
         <p>I build web applications and ML prototypes. I enjoy learning new tools and shipping clean, maintainable code. When I'm not coding, I explore design, read, and experiment with tech projects.</p>
       </div>
     </section>
 
-    <section id="education" class="section" aria-label="Education section">
-      <h2 class="section-title">Education</h2>
+    <!-- EDUCATION -->
+    <section id="education" class="section" aria-labelledby="education-heading">
+      <h2 class="section-title" id="education-heading">Education</h2>
+
       <div class="edu-grid">
-        <div class="edu-card">
+        <div class="edu-box">
           <h3>Master of Computer Application (MCA)</h3>
           <p>The National Institute of Engineering, Mysore, Karnataka, India • 2023 — 2025</p>
         </div>
 
-        <div class="edu-card">
+        <div class="edu-box">
           <h3>Bachelor of Computer Application (BCA)</h3>
           <p>PES College of Science, Commerce and Arts, Mandya, Karnataka, India • 2020 — 2023</p>
         </div>
 
-        <div class="edu-card">
+        <div class="edu-box">
           <h3>Secondary Education</h3>
           <p>Govt PU College for Girls, Channapatna, Karnataka, India • 2017 — 2020</p>
         </div>
 
-        <div class="edu-card edu-full">
+        <div class="edu-box full-width">
           <h3>Higher Secondary Education</h3>
           <p>B J L Public High School, Channapatna, Karnataka, India • 2017</p>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="section" aria-label="Projects section">
-      <h2 class="section-title">Projects</h2>
+    <!-- PROJECTS -->
+    <section id="projects" class="section" aria-labelledby="projects-heading">
+      <h2 class="section-title" id="projects-heading">Projects</h2>
+
       <div class="projects-grid">
-        <div class="project-box" role="article">
-          <div class="project-thumb">SD</div>
-          <div class="project-meta">
-            <h3>Stress Detection in IT Professionals</h3>
-            <p>Machine learning web app that tracks stress levels using health data.</p>
-            <p style="margin-top:10px;"><a href="#" aria-label="GitHub link">🔗 GitHub</a> • <a href="#" aria-label="Live demo link">🌐 Live Demo</a></p>
-          </div>
+        <div class="project-box">
+          <h3>Stress Detection in IT Professionals</h3>
+          <p>Machine learning web app that tracks stress levels using health data.</p>
+          <p class="project-links">
+            <a href="#" aria-label="GitHub link">🔗 GitHub</a> • <a href="#" aria-label="Live demo link">🌐 Live Demo</a>
+          </p>
         </div>
       </div>
     </section>
 
-    <section id="skills" class="section" aria-label="Skills section">
-      <h2 class="section-title">Skills</h2>
-      <div class="skills-wrap">
-        <div class="skill-chips" aria-hidden="false">
-          <div class="skill">C</div>
-          <div class="skill">Python</div>
-          <div class="skill">HTML</div>
-          <div class="skill">CSS</div>
-          <div class="skill">SQL</div>
-          <div class="skill">Machine Learning</div>
-          <div class="skill">Flask</div>
-          <div class="skill">GitHub</div>
-        </div>
+    <!-- SKILLS -->
+    <section id="skills" class="section" aria-labelledby="skills-heading">
+      <h2 class="section-title" id="skills-heading">Skills</h2>
 
-        <div class="skill-bars" aria-hidden="false" aria-label="Skill visual bars">
-          <div class="bar">
-            <div class="label"><span>Python</span><span>85%</span></div>
-            <div class="track"><div class="fill" style="width:85%"></div></div>
-          </div>
-          <div class="bar">
-            <div class="label"><span>Machine Learning</span><span>78%</span></div>
-            <div class="track"><div class="fill" style="width:78%"></div></div>
-          </div>
-          <div class="bar">
-            <div class="label"><span>HTML / CSS</span><span>82%</span></div>
-            <div class="track"><div class="fill" style="width:82%"></div></div>
-          </div>
-          <div class="bar">
-            <div class="label"><span>Flask</span><span>70%</span></div>
-            <div class="track"><div class="fill" style="width:70%"></div></div>
-          </div>
+      <div class="card">
+        <div class="skills-list" role="list">
+          <div class="skill" role="listitem">C</div>
+          <div class="skill" role="listitem">Python</div>
+          <div class="skill" role="listitem">HTML</div>
+          <div class="skill" role="listitem">CSS</div>
+          <div class="skill" role="listitem">SQL</div>
+          <div class="skill" role="listitem">Machine Learning</div>
+          <div class="skill" role="listitem">Flask</div>
+          <div class="skill" role="listitem">GitHub</div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section" aria-label="Contact section">
-      <!-- Contact heading: no marker, big photo (same your-photo.jpg) placed to the left -->
-      <h2 class="section-title no-marker">
-        <img src="your-photo.jpg" alt="Sushravya photo" class="contact-photo">
-        Contact
-      </h2>
+    <!-- CONTACT -->
+    <section id="contact" class="section" aria-labelledby="contact-heading">
+      <h2 class="section-title" id="contact-heading">Contact</h2>
 
-      <div class="contact-grid">
-        <div class="contact-form" role="form" aria-label="Contact form">
+      <div class="contact-buttons" aria-hidden="false">
+        <a href="mailto:sushravya1723@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
+        <a href="tel:+919380415588" class="contact-btn"><i class="fas fa-phone"></i> Call</a>
+        <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank" class="contact-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      </div>
+
+      <div class="contact-container">
+        <div class="contact-form glass" role="form" aria-label="Contact form">
           <form id="contactForm" action="https://formspree.io/f/xgvlgzkg" method="POST" novalidate>
             <div class="form-group">
               <input type="text" name="name" id="name" placeholder=" " required>
@@ -372,79 +387,64 @@
               <textarea name="message" id="message" rows="5" placeholder=" " required></textarea>
               <label for="message">Your Message</label>
             </div>
-
-            <div style="display:flex;gap:12px;align-items:center">
-              <button class="action-btn" type="submit" style="background:var(--accent-grad); color:white; border:none; padding:10px 14px; border-radius:10px">Send Message</button>
-              <span style="color:var(--muted);font-size:13px">Or email me at <a href="mailto:sushravya1723@gmail.com">sushravya1723@gmail.com</a></span>
+            <div class="form-footer">
+              <button class="btn" type="submit">Send Message</button>
+              <span class="note">Or email me at <a href="mailto:sushravya1723@gmail.com">sushravya1723@gmail.com</a></span>
             </div>
           </form>
         </div>
-
-        <aside class="contact-panel" aria-hidden="false">
-          <!-- show your photo here too (same file) -->
-          <img src="your-photo.jpg" alt="Sushravya photo in contact panel">
-          <h3>Let's connect</h3>
-          <p>If you're looking for a developer who builds web apps and ML prototypes — drop a message. I reply quickly and love discussing new project ideas.</p>
-          <div style="margin-top:12px; display:flex; gap:10px;">
-            <a href="mailto:sushravya1723@gmail.com" class="action-btn" style="text-decoration:none"><i class="fas fa-envelope"></i> Email</a>
-            <a href="tel:+919380415588" class="action-btn" style="text-decoration:none"><i class="fas fa-phone"></i> Call</a>
-          </div>
-          <div style="margin-top:18px; color:var(--muted); font-size:13px">You can also find my code on GitHub or connect on LinkedIn.</div>
-          <div style="margin-top:12px; display:flex; gap:10px;">
-            <a href="https://github.com/Sushravya40" class="action-btn" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" class="action-btn" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          </div>
-        </aside>
       </div>
     </section>
 
     <footer>
       © <span id="year"></span> Sushravya B C — All rights reserved.
     </footer>
+
   </div>
 
   <script>
     // set year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // theme toggle & persistence
+    // Theme Toggle persistence + prefers-color-scheme fallback
     const THEME_KEY = 'sushravya_theme';
-    const btn = document.getElementById('toggleTheme');
+    const toggleBtn = document.getElementById('toggleTheme');
 
     function applyTheme(theme){
-      if(theme === 'light') {
-        document.documentElement.setAttribute('data-theme','light');
-        if(btn) btn.textContent = '☀️';
-        btn && btn.setAttribute('aria-pressed','true');
+      if(theme === 'dark'){
+        document.documentElement.setAttribute('data-theme','dark');
+        if(toggleBtn) toggleBtn.textContent = '☀️';
+        if(toggleBtn) toggleBtn.setAttribute('aria-pressed','true');
       } else {
         document.documentElement.removeAttribute('data-theme');
-        if(btn) btn.textContent = '🌙';
-        btn && btn.setAttribute('aria-pressed','false');
+        if(toggleBtn) toggleBtn.textContent = '🌙';
+        if(toggleBtn) toggleBtn.setAttribute('aria-pressed','false');
       }
     }
-    (function init(){
+
+    (function initTheme(){
       try{
         const saved = localStorage.getItem(THEME_KEY);
-        if(saved) applyTheme(saved);
-        else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) applyTheme('light');
-        else applyTheme('dark');
-      }catch(e){ applyTheme('dark') }
+        if(saved === 'dark' || saved === 'light'){
+          applyTheme(saved);
+        } else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+          applyTheme('dark');
+        } else {
+          applyTheme('light');
+        }
+      }catch(e){
+        applyTheme('light');
+      }
     })();
-    btn && btn.addEventListener('click', () => {
-      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-      const next = isLight ? 'dark' : 'light';
-      applyTheme(next);
-      try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
-    });
 
-    // animate skill fills on load
-    window.addEventListener('load', () => {
-      document.querySelectorAll('.fill').forEach(el => {
-        const w = el.style.width || '60%';
-        el.style.width = '0%';
-        setTimeout(()=> el.style.width = w, 150);
+    if(toggleBtn){
+      toggleBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const next = isDark ? 'light' : 'dark';
+        applyTheme(next);
+        try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
       });
-    });
+    }
   </script>
 </body>
 </html>
