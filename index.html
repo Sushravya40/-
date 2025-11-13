@@ -7,134 +7,82 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* -----------------------
-       ROOT THEMES
-       Default = Light Pastel (soft)
-       Dark overrides below using [data-theme="dark"]
-       ----------------------- */
     :root{
-      /* Soft pastel gradient theme (pink → lavender → aqua) */
-      --bg-900: #f4f7ff;   /* very light pastel blue */
-      --bg-800: #f2faff;
-      --card: rgba(255,255,255,0.45);
-      --glass-border: rgba(255,255,255,0.35);
-      --glass-blur: 18px;
-      --text: #334155;
-      --muted: #6b7280;
-      --accent-1: #a78bfa;   /* soft lavender */
-      --accent-2: #67e8f9;   /* aqua pastel */
-      --accent-3: #f0abfc;   /* pastel pink */
+      /* Lavender + Blue Premium (light) */
+      --bg-900: #f6f7ff;   /* very soft lavender-blue */
+      --bg-800: #eef3ff;
+
+      --card: rgba(255,255,255,0.72);
+      --glass-border: rgba(99,102,241,0.12);
+      --glass-blur: 14px;
+
+      --text: #0f1724; /* dark slate */
+      --muted: #6b7280; /* muted grey */
+
+      --accent-1: #6366f1; /* indigo-500 (lavender-blue) */
+      --accent-2: #3b82f6; /* blue-500 */
+      --accent-3: #a78bfa; /* soft lavender */
+
       --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
       --page-padding: 36px 20px;
     }
 
-    /* Dark mode overrides: Blue Cyber Dark with Gold Shine */
-    [data-theme="dark"]{
-      --bg-900: #061421; /* deep blue */
-      --bg-800: #0d2233;
-      --card: rgba(255,255,255,0.05);
-      --glass-border: rgba(255,255,255,0.06);
-      --glass-blur: 20px;
-      --text: #eaf7ff;
-      --muted: #9db9c9;
-      --accent-1: #38bdf8; /* cyan */
-      --accent-2: #06b6d4; /* bright aqua */
-      --accent-3: #0ea5b7;
-      --accent-gold: #f5c542;
-      --accent-gold-soft: #f8e9a1;
-      --accent-grad: linear-gradient(135deg, var(--accent-gold), var(--accent-1), var(--accent-2));
-      --accent-gold-grad: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-soft));
-      --page-padding: 36px 20px;
-    }
-
-    /* global */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family:'Inter',system-ui,Arial,sans-serif;
       background:
-        radial-gradient(600px 400px at 10% 10%, rgba(124,58,237,0.03), transparent 8%),
-        radial-gradient(500px 350px at 90% 80%, rgba(6,182,212,0.02), transparent 10%),
+        radial-gradient(600px 400px at 10% 10%, rgba(124,58,237,0.08), transparent 8%),
+        radial-gradient(500px 350px at 90% 80%, rgba(6,182,212,0.05), transparent 10%),
         var(--bg-900);
       color:var(--text);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.5;
-      padding:var(--page-padding);
-      transition:background .35s ease,color .25s ease;
+      padding:36px 20px;
     }
 
     a{color:var(--accent-1);text-decoration:none}
     .container{max-width:1100px;margin:0 auto}
 
-    /* floating shapes (subtle) */
-    .bg-shape{position:fixed;right:-120px;top:-80px;width:420px;height:420px;pointer-events:none;opacity:0.12;filter:blur(40px);background:radial-gradient(circle at 30% 30%, var(--accent-1), transparent 40%);transform:rotate(12deg)}
-    .bg-shape-2{position:fixed;left:-160px;bottom:-120px;width:500px;height:500px;pointer-events:none;opacity:0.08;filter:blur(60px);background:radial-gradient(circle at 70% 70%, var(--accent-2), transparent 40%)}
+    /* subtle floating shapes */
+    .bg-shape{position:fixed;right:-120px;top:-80px;width:420px;height:420px;pointer-events:none;opacity:0.12;filter:blur(40px);background:radial-gradient(circle at 30% 30%, #7c3aed, transparent 40%);transform:rotate(12deg)}
+    .bg-shape-2{position:fixed;left:-160px;bottom:-120px;width:500px;height:500px;pointer-events:none;opacity:0.08;filter:blur(60px);background:radial-gradient(circle at 70% 70%, #06b6d4, transparent 40%)}
 
-    /* Top bar (pill style) */
-    .site-header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 12px;border-radius:12px;
-                 background:linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.5));
-                 border:1px solid rgba(0,0,0,0.06);}
-    .brand-pill{background:linear-gradient(90deg, rgba(255,255,255,0.85), rgba(255,255,255,0.8));padding:8px 14px;border-radius:18px;font-weight:700;display:inline-flex;align-items:center;gap:10px;color:var(--text)}
-    .main-nav{display:flex;gap:22px;align-items:center;justify-self:center}
-    .main-nav a{color:var(--muted);font-weight:600;padding:8px 6px;border-radius:8px;transition:all .18s}
-    .main-nav a:hover{color:var(--text);background:rgba(255,255,255,0.06);transform:translateY(-2px)}
-
-    .header-actions{display:flex;align-items:center;gap:10px}
-    .icon-pill{width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--text)}
-    .icon-pill:hover{transform:translateY(-3px)}
-
-    /* Dark mode top bar tweaks */
-    [data-theme="dark"] .site-header{
-      background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.03);
-    }
-    [data-theme="dark"] .brand-pill{
-      background: var(--accent-gold-grad);
-      color:#0b0b0b;
-      box-shadow: 0 8px 30px rgba(8,16,22,0.6), 0 0 18px rgba(245,197,66,0.08) inset;
-    }
-    [data-theme="dark"] .main-nav a:hover{background:linear-gradient(90deg, rgba(245,197,66,0.06), rgba(56,189,248,0.03));color:var(--accent-gold);}
+    header{display:flex;justify-content:space-between;align-items:center;padding:8px 0}
+    .brand h1{margin:0;font-size:20px;font-weight:700}
+    .brand p{margin:4px 0 0;color:var(--muted);font-size:13px}
+    nav{display:flex;align-items:center;gap:12px}
+    .icon-link{font-size:18px;color:var(--text);opacity:0.9}
+    .theme-toggle{cursor:pointer;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--text);font-size:14px}
 
     /* SPLIT HERO (glass) */
     .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-top:22px}
-    .glass{background:var(--card);border-radius:14px;padding:20px;backdrop-filter:blur(var(--glass-blur)) saturate(120%);border:1px solid var(--glass-border);box-shadow:0 8px 30px rgba(2,6,23,0.06)}
+
+    .glass{background:var(--card);border-radius:14px;padding:20px;backdrop-filter:blur(var(--glass-blur)) saturate(120%);border:1px solid var(--glass-border);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+
     .hero-left .intro{margin-bottom:12px}
     .hero-left h2{margin:0;font-size:30px;line-height:1.05}
     .hero-left p{color:var(--muted);margin-top:10px}
     .hero-buttons{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{padding:10px 16px;border-radius:10px;background:var(--accent-grad);color:#0b0b0b;font-weight:700;border:none;box-shadow:0 6px 20px rgba(0,0,0,0.08);transition:transform .18s}
-    .btn:hover{transform:translateY(-4px);filter:brightness(.98)}
-    .contact-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--text);font-weight:600}
-
-    /* Dark variant for buttons */
-    [data-theme="dark"] .btn{background: linear-gradient(90deg, var(--accent-gold), var(--accent-1)); color:#081019; box-shadow:0 8px 40px rgba(245,197,66,0.08);}
-    [data-theme="dark"] .contact-btn{border:1px solid rgba(255,255,255,0.04);background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); color:var(--text)}
+    .btn{padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent-1), #9333ea);color:#fff;font-weight:600;border:none;box-shadow:0 6px 20px rgba(124,58,237,0.18)}
+    .contact-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(124,58,237,0.12);color:var(--text);font-weight:600}
 
     /* hero right image card */
     .hero-right{display:flex;justify-content:center}
-    .photo-wrap{width:100%;max-width:360px;border-radius:14px;overflow:hidden;padding:8px;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.55));border:1px solid rgba(0,0,0,0.06);box-shadow:0 12px 40px rgba(2,6,23,0.06);position:relative}
-    .photo-wrap::after{content:'';position:absolute;inset:0;border-radius:inherit;padding:2px;pointer-events:none;background:linear-gradient(135deg, rgba(167,139,250,0.06), rgba(103,232,249,0.04));mix-blend-mode:screen}
+    .photo-wrap{width:100%;max-width:360px;border-radius:14px;overflow:hidden;padding:8px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.05);box-shadow:0 12px 40px rgba(2,6,23,0.6);position:relative}
+    .photo-wrap::after{content:'';position:absolute;inset:0;border-radius:inherit;padding:2px;pointer-events:none;background:linear-gradient(135deg, rgba(124,58,237,0.08), rgba(6,182,212,0.06));mix-blend-mode:screen}
     .photo-wrap img{display:block;width:100%;height:100%;object-fit:cover;border-radius:10px;transform:translateZ(0);transition:transform .45s ease, box-shadow .45s ease}
     .photo-wrap img:hover{transform:scale(1.03)}
 
-    /* dark photo frame */
-    [data-theme="dark"] .photo-wrap{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.04);
-      box-shadow: 0 12px 40px rgba(3,10,20,0.7), 0 0 30px rgba(245,197,66,0.06) inset;
-    }
-    [data-theme="dark"] .photo-wrap::after{background:linear-gradient(135deg, rgba(245,197,66,0.06), rgba(56,189,248,0.04));mix-blend-mode:screen}
-
-    /* sections + cards */
-    .card{margin-top:18px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.55));border:1px solid rgba(0,0,0,0.06);backdrop-filter:blur(8px)}
-    .section-title{margin:28px 0 12px;font-size:20px;color:var(--text)}
-    [data-theme="dark"] .card{background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03);}
+    /* SECTIONS */
+    .card{margin-top:18px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(8px)}
+    .section-title{margin:28px 0 12px;font-size:20px}
 
     /* Education grid */
     .edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .edu-box{padding:16px;border-radius:10px;border-left:4px solid transparent;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
+    .edu-box{padding:16px;border-radius:10px;border-left:4px solid transparent;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
     .edu-box h3{margin:0}
     .edu-box p{margin:6px 0 0;color:var(--muted);font-size:14px}
     .edu-box.full-width{grid-column:1 / -1}
@@ -142,19 +90,17 @@
     /* Projects */
     .projects-grid{display:grid;grid-template-columns:1fr;gap:16px}
     .project-box{padding:14px;border-radius:10px;border-left:4px solid rgba(124,58,237,0.18)}
-    [data-theme="dark"] .project-box{border-left:4px solid var(--accent-gold); box-shadow:0 8px 20px rgba(6,182,212,0.02);}
 
     /* skills */
     .skills-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-    .skill{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(167,139,250,0.08), rgba(103,232,249,0.03));color:var(--text);font-weight:600;font-size:13px}
-    [data-theme="dark"] .skill{background:transparent;border:1px solid rgba(255,255,255,0.04); box-shadow: 0 6px 18px rgba(56,189,248,0.03) inset; color:var(--text)}
+    .skill{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(124,58,237,0.08), rgba(6,182,212,0.03));color:var(--text);font-weight:600;font-size:13px}
 
     /* contact */
     .contact-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
     .contact-form{max-width:720px}
     .contact-container{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
-    .contact-form input,.contact-form textarea{width:100%;padding:14px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:transparent;color:var(--text);outline:none}
-    .contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent-1);box-shadow:0 6px 20px rgba(56,189,248,0.06)}
+    .contact-form input,.contact-form textarea{width:100%;padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);outline:none}
+    .contact-form input:focus,.contact-form textarea:focus{border-color:rgba(124,58,237,0.28);box-shadow:0 6px 20px rgba(124,58,237,0.06)}
     .contact-form label{position:absolute;top:50%;left:14px;transform:translateY(-50%);color:var(--muted);pointer-events:none;padding:0 6px;transition:0.18s;font-size:14px;background:transparent}
 
     .form-group{position:relative;margin-bottom:18px}
@@ -175,25 +121,63 @@
     @media (max-width:480px){
       .hero-left h2{font-size:22px}
       .skill{font-size:13px;padding:6px 10px}
-      .site-header{flex-direction:column;gap:12px;align-items:flex-start}
+      header{gap:8px}
     }
 
     /* micro interactions */
     .icon-link{transition:transform .18s ease, color .18s}
     .icon-link:hover{transform:translateY(-3px);color:var(--accent-2)}
-  </style>
+
+  
+
+    /* --- Top bar style like the provided image --- */
+    .site-header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 12px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+    .brand-pill{background:rgba(255,255,255,0.03);padding:8px 14px;border-radius:18px;font-weight:700;display:inline-flex;align-items:center;gap:10px}
+    .brand-pill b{font-weight:700}
+    .main-nav{display:flex;gap:26px;align-items:center;justify-self:center}
+    .main-nav a{color:var(--muted);font-weight:600;padding:8px 6px;border-radius:8px}
+    .main-nav a:hover{color:var(--text);background:rgba(255,255,255,0.02)}
+    .header-actions{display:flex;align-items:center;gap:10px}
+    .icon-pill{width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(255,255,255,0.04)}
+    .icon-pill:hover{background:rgba(255,255,255,0.02)}
+
+
+
+/* Dark mode overrides */
+[data-theme="dark"]{
+  /* Dark overrides tuned for Lavender + Blue Premium */
+  --bg-900: #071027; /* deep night navy */
+  --bg-800: #0b1730;
+
+  --card: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.06);
+  --glass-blur: 18px;
+
+  --text: #e6eef8;
+  --muted: #9fb0d6;
+
+  --accent-1: #7c5cff; /* lavender-bright */
+  --accent-2: #3b82f6; /* blue */
+  --accent-3: #93c5fd; /* soft sky blue */
+
+  /* subtle cool highlight gradient */
+  --accent-grad: linear-gradient(135deg, var(--accent-3), var(--accent-1), var(--accent-2));
+}
+
+</style>
 </head>
 <body>
-  <div class="bg-shape" aria-hidden="true"></div>
-  <div class="bg-shape-2" aria-hidden="true"></div>
+  <div class="bg-shape"></div>
+  <div class="bg-shape-2"></div>
 
   <div class="container">
     <!-- HEADER -->
-    <header class="site-header" role="banner">
+    <header class="site-header">
       <div class="brand-pill" aria-hidden="false"><b>Sushravya B C</b></div>
 
       <nav class="main-nav" role="navigation" aria-label="Primary">
         <a href="#about">About</a>
+        <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
@@ -201,7 +185,7 @@
       </nav>
 
       <div class="header-actions">
-        <button class="theme-toggle" id="toggleTheme" aria-pressed="false" title="Toggle theme">🌙</button>
+        <button class="theme-toggle" id="toggleTheme" aria-pressed="false">🌙</button>
         <a href="https://github.com/Sushravya40" target="_blank" class="icon-pill" aria-label="GitHub"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/in/sushravya-b-c-6bb421228" target="_blank" class="icon-pill" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
@@ -210,7 +194,7 @@
     <!-- HERO -->
     <section class="hero" aria-label="Introduction">
       <div class="hero-left">
-        <div class="glass" role="region" aria-label="Intro card">
+        <div class="glass">
           <div class="intro">
             <h2>Hello, I'm <b>Sushravya</b> 👋</h2>
             <p>A passionate software developer and machine learning enthusiast. I enjoy building web apps, solving problems, and learning modern technologies. Looking for opportunities to contribute and grow in the IT industry.</p>
@@ -224,7 +208,7 @@
       </div>
 
       <div class="hero-right">
-        <div class="photo-wrap" aria-hidden="false">
+        <div class="photo-wrap">
           <!-- keep same src and alt as original -->
           <img src="your-photo.jpg" alt="Sushravya photo" onerror="this.style.opacity=0.85;">
         </div>
