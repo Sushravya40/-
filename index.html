@@ -132,12 +132,22 @@
 
   .hero-right img {
   width: 100%;
-  border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
-  transition: 0.4s ease;
+  border-radius: 20px;
+  object-fit: cover;
+
+  /* Gradient Border */
+  padding: 6px;
+  background: linear-gradient(135deg, #7c3aed, #9333ea, #c084fc);
+
+  /* Soft glow */
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.4);
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .hero-right img:hover {
-  border-radius: 30% 70% 60% 40% / 50% 40% 70% 50%;
+  transform: scale(1.03);
+  box-shadow: 0 0 35px rgba(124, 58, 237, 0.6);
 }
 
 
