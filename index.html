@@ -190,15 +190,27 @@
   margin-bottom: 8px;
   font-size: 16px;
 } */
-    .skills-pills span {
-  display: inline-block;
-  padding: 8px 14px;
-  margin: 6px;
-  border-radius: 20px;
-  background: linear-gradient(90deg,#7c3aed,#3b82f6);
-  color: white;
-  font-size: 14px;
+   .skills-pills {
+  margin-top: 10px;
 }
+
+.skills-pills span {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #7c3aed, #3b82f6);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skills-pills span:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(124,58,237,0.35);
+}
+
 
 
     
@@ -386,11 +398,14 @@ to grow in the IT industry.
   <span>Java</span>
   <span>Python</span>
   <span>MySQL</span>
+  <span>MongoDB</span>
   <span>HTML5</span>
   <span>CSS3</span>
   <span>JavaScript</span>
   <span>Git</span>
+  <span>VS Code</span>
 </div>
+
 
 </div>
 
