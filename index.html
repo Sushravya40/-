@@ -123,6 +123,7 @@
       -webkit-backdrop-filter: blur(6px) saturate(120%);
       backdrop-filter: blur(6px) saturate(120%);
       box-shadow: 0 10px 30px rgba(2,6,23,0.18);
+      white-space: nowrap;
     }
 
     /* larger, colored smoky outer glow */
@@ -289,7 +290,7 @@
     .edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
     .edu-box{padding:16px;border-radius:20px;border-left:4px solid transparent;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
     .edu-box h3{margin:0}
-    .edu-box p{margin:6px 0 0;color:var(--muted);font-size:14px}
+    .edu-box p{margin:6px 0 0;color:var(--muted);font-size:14px;text-align:justify}
     .edu-box.full-width{grid-column:1 / -1}
 
     .projects-grid{display:grid;grid-template-columns:1fr;gap:16px}
@@ -531,7 +532,7 @@ to grow in the IT industry.
 
     <!-- EDUCATION & CERTIFICATIONS -->
     <section id="education" class="section" aria-labelledby="education-heading">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: stretch;">
         
         <!-- EDUCATION -->
         <div>
