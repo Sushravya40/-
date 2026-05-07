@@ -313,6 +313,99 @@
 
     @media (max-width:1000px){ .hero{grid-template-columns:1fr;gap:18px} .hero-right{order:2} .edu-grid{grid-template-columns:1fr} .container{padding:0 12px} .photo-wrap{max-width:100%} }
     @media (max-width:480px){ .hero-left h2{font-size:22px} .skill{font-size:13px;padding:6px 10px} header{gap:8px} }
+
+    /* TIMELINE EXPERIENCE */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+      margin-top: 30px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 6px;
+      width: 2px;
+      background: rgba(124,58,237,0.15);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -31px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ec4899, #a855f7);
+      box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
+      border: 2px solid var(--bg-900);
+    }
+    .experience-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+    }
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .experience-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text);
+    }
+    .experience-type {
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.25);
+      color: #d8b4fe;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .experience-company {
+      color: #c084fc;
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .experience-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    .experience-details {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .experience-details li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 12px;
+      color: #cbd5e1;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .experience-details li::before {
+      content: '▶';
+      position: absolute;
+      left: 0;
+      top: 3px;
+      font-size: 10px;
+      color: #a855f7;
+    }
   </style>
 </head>
 <body>
@@ -386,21 +479,43 @@ to grow in the IT industry.
 
     <!-- EXPERIENCE -->
 <section id="experience" class="section" aria-labelledby="experience-heading">
-  <h2 class="section-title" id="experience-heading">Experience</h2>
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h2 class="section-title" id="experience-heading" style="font-size: 36px; margin-bottom: 8px;">Experience</h2>
+  </div>
 
-  <div class="card">
-    <div class="edu-box full-width">
-      <h3>Software Development Intern</h3>
-      <p><strong>KodNest Technologies</strong> — Bengaluru, Karnataka • Nov 2025 – Present</p>
+  <div class="timeline">
+    <!-- First Experience -->
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="experience-card">
+        <div class="experience-header">
+          <h3 class="experience-title">Software Development Intern</h3>
+          <span class="experience-type">Internship</span>
+        </div>
+        <div class="experience-company">KodNest Technologies</div>
+        <div class="experience-meta">Bengaluru, Karnataka · Nov 2025 – Present</div>
+        <ul class="experience-details">
+          <li>Trained in Full-Stack Development covering both Frontend and Backend technologies</li>
+          <li>Worked with SDLC workflows, debugging, and real-time project practices</li>
+        </ul>
+      </div>
+    </div>
 
-      <ul style="margin-top:10px; padding-left:18px; color:var(--muted);">
-        <li>Trained in Full-Stack Development covering both Frontend and Backend technologies.</li>
-        <li>Frontend: HTML5, CSS3, JavaScript (ES6), React.js fundamentals.</li>
-        <li>Backend: Java, Python, and Data Structures & Algorithms (DSA).</li>
-        <li>Databases: MySQL, SQL, and MongoDB.</li>
-        <li>Tools & Testing: Git, GitHub, VS Code, Antigravity, and basic Jest testing.</li>
-        <li>Worked with SDLC workflows, debugging, and real-time project practices.</li>
-      </ul>
+    <!-- Second Experience -->
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="experience-card">
+        <div class="experience-header">
+          <h3 class="experience-title">AI/ML Intern</h3>
+          <span class="experience-type">Internship</span>
+        </div>
+        <div class="experience-company">Cojective</div>
+        <div class="experience-meta">Mysuru, Karnataka · 05/2025 – 06/2025</div>
+        <ul class="experience-details">
+          <li>Developed data processing pipelines for AI/ML workflows, improving data handling efficiency</li>
+          <li>Debugged and optimized Python scripts to improve model accuracy in an Agile environment</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -475,6 +590,10 @@ to grow in the IT industry.
             <span>Java</span>
             <span>Python</span>
             <span>JDBC</span>
+            <span>Spring</span>
+            <span>Spring Boot</span>
+            <span>Hibernate</span>
+            <span>Django</span>
           </div>
         </div>
 
@@ -491,6 +610,7 @@ to grow in the IT industry.
             <span>Antigravity</span>
             <span>IntelliJ IDEA</span>
             <span>Cursor</span>
+            <span>Maven</span>
           </div>
         </div>
 
