@@ -448,9 +448,9 @@
             </div>
            <h1 style="font-size:clamp(2.2rem,4vw,3.4rem); margin-bottom:8px;"> Sushravya B C</h1>
          <p class="muted" style="margin-top:0;">Channapatna, Karnataka, India</p>
-             <p>MCA graduate specializing in Full-Stack Development with hands-on 
- experience in Spring Boot, React, and Django. I build end-to-end 
- web applications — from secure backends to polished, responsive UIs.</p>
+            <p>MCA graduate specializing in Full-Stack Development with hands-on 
+experience in Spring Boot, React, and Django. I build end-to-end 
+web applications — from secure backends to polished, responsive UIs.</p>
           </div>
 
           <div class="hero-buttons">
@@ -463,7 +463,7 @@
 
       <div class="hero-right">
         <div class="photo-wrap">
-          <img src="portfolioicon.jpg" alt="Sushravya B C" onerror="this.style.opacity=0.85;">
+          <img src="https://ui-avatars.com/api/?name=Sushravya+BC&size=300&background=6366f1&color=fff" alt="Sushravya B C" onerror="this.style.opacity=0.85;">
         </div>
       </div>
     </section>
@@ -474,13 +474,17 @@
         <h2 class="section-title" style="font-size: 36px; margin-bottom: 8px;">About Me</h2>
       </div>
       <div class="card">
-        <p>  I am a motivated Computer Applications graduate with a strong interest in
-      Software and Web Development. I enjoy building responsive web applications,
-      working with programming languages and databases, and creating practical
-      solutions to real-world problems. During my academic journey, I completed
-      multiple projects that strengthened my technical and analytical skills.
-      I am eager to start my professional career in the IT industry where I can
-      contribute, learn continuously, and grow as a developer.</p>
+        <p>I am an MCA graduate and Software Developer with hands-on experience 
+in Java Full Stack Development and Machine Learning. I enjoy building 
+scalable web applications, designing responsive user interfaces, and 
+solving real-world problems through technology.</p>
+        <p>Through internships and projects such as ShopKart — a full-stack 
+e-commerce platform — and Stress Detection of IT Professionals using 
+Machine Learning, I have strengthened my skills in software development, 
+problem-solving, and collaborative project execution. I am currently 
+deepening my expertise in Data Structures and Algorithms and advanced 
+Spring Boot development, and I am actively seeking opportunities where 
+I can contribute, grow, and make a real impact as a Software Developer.</p>
       </div>
     </section>
 
@@ -502,8 +506,8 @@
         <div class="experience-company">KodNest Technologies</div>
         <div class="experience-meta">Bengaluru, Karnataka · Nov 2025 – Present</div>
         <ul class="experience-details">
-          <li>Built and deployed full-stack features using Spring Boot and React as part of live project workflows</li>
-          <li>Applied SDLC practices including sprint planning, code reviews, and debugging in a team environment</li>
+          <li>Built and deployed full-stack features using Spring Boot and React as part of live project workflows at KodNest Technologies</li>
+          <li>Applied SDLC practices including sprint planning, code reviews, and debugging in a collaborative team environment</li>
         </ul>
       </div>
     </div>
@@ -539,20 +543,20 @@
           </div>
           <div class="edu-grid" style="grid-template-columns: 1fr;">
             <div class="edu-box">
-              <h3>Master of Computer Application (MCA)</h3>
-              <p>The National Institute of Engineering, Mysore, Karnataka, India • 2023 — 2025 | <strong>CGPA: 8.3</strong></p>
+              <h3>Secondary Education</h3>
+              <p>B J L Public High School, Channapatna, Karnataka, India • 2017</p>
+            </div>
+            <div class="edu-box">
+              <h3>Higher Secondary Education</h3>
+              <p>Govt PU College for Girls, Channapatna, Karnataka, India • 2017 — 2019</p>
             </div>
             <div class="edu-box">
               <h3>Bachelor of Computer Application (BCA)</h3>
               <p>PES College of Science, Commerce and Arts, Mandya, Karnataka, India • 2020 — 2023 | <strong>CGPA: 8.4</strong></p>
             </div>
             <div class="edu-box">
-              <h3>Higher Secondary Education</h3>
-              <p>Govt PU College for Girls, Channapatna, Karnataka, India • 2017 — 2020</p>
-            </div>
-            <div class="edu-box">
-              <h3>Secondary Education</h3>
-              <p>B J L Public High School, Channapatna, Karnataka, India • 2017</p>
+              <h3>Master of Computer Application (MCA)</h3>
+              <p>The National Institute of Engineering, Mysore, Karnataka, India • 2023 — 2025 | <strong>CGPA: 8.3</strong></p>
             </div>
           </div>
         </div>
@@ -788,6 +792,9 @@
               <button class="btn" type="submit">Send Message</button>
               <span class="note">Or email me at <a href="mailto:sushravya1723@gmail.com">sushravya1723@gmail.com</a></span>
             </div>
+            <div id="form-success" style="display:none; padding: 16px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); color: #10b981; border-radius: 10px; margin-top: 16px;">
+              Thank you! Your message has been sent successfully.
+            </div>
           </form>
         </div>
       </div>
@@ -840,6 +847,30 @@
         const next = isDark ? 'light' : 'dark';
         applyTheme(next);
         try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+      });
+    }
+
+    // Form AJAX Submission
+    const form = document.getElementById("contactForm");
+    if (form) {
+      form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const data = new FormData(form);
+        try {
+          const res = await fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+          if(res.ok) {
+            document.getElementById("form-success").style.display = "block";
+            form.reset();
+          } else {
+            alert("Oops! There was a problem submitting your form");
+          }
+        } catch (err) {
+          alert("Oops! There was a problem submitting your form");
+        }
       });
     }
   </script>
