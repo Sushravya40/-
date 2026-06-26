@@ -315,6 +315,18 @@
     @media (max-width:1000px){ .hero{grid-template-columns:1fr;gap:18px} .hero-right{order:2} .edu-grid{grid-template-columns:1fr} .container{padding:0 12px} .photo-wrap{max-width:100%} }
     @media (max-width:480px){ .hero-left h2{font-size:22px} .skill{font-size:13px;padding:6px 10px} header{gap:8px} }
 
+
+    .edu-cert-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: 24px;
+    }
+    @media (max-width: 768px) {
+      .edu-cert-container {
+        grid-template-columns: 1fr;
+      }
+    }
     /* TIMELINE EXPERIENCE */
     .timeline {
       position: relative;
@@ -534,7 +546,7 @@ I can contribute, grow, and make a real impact as a Software Developer.</p>
 
     <!-- EDUCATION & CERTIFICATIONS -->
     <section id="education" class="section" aria-labelledby="education-heading">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: stretch;">
+      <div class="edu-cert-container">
         
         <!-- EDUCATION -->
         <div>
@@ -621,6 +633,82 @@ I can contribute, grow, and make a real impact as a Software Developer.</p>
       </div>
     </section>
 
+    <!-- SKILLS -->
+    <section id="skills" class="section" aria-labelledby="skills-heading">
+      <div style="text-align: center; margin-bottom: 40px; margin-top: 20px;">
+        <h2 class="section-title" id="skills-heading" style="font-size: 36px; margin-bottom: 8px;">Technical Skills</h2>
+        <p style="color: var(--muted);">Technologies I use to build fast, scalable, and modern applications.</p>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Frontend -->
+        <div class="skill-card">
+          <div class="skill-category-title title-frontend">Frontend</div>
+          <div class="skills-pills">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript(ES6)</span>
+            <span>React</span>
+            <span>Redux</span>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="skill-card">
+          <div class="skill-category-title title-backend">Backend</div>
+          <div class="skills-pills">
+            <span>Java</span>
+            <span>Python</span>
+            <span>JDBC</span>
+            <span>Spring</span>
+            <span>Spring Boot</span>
+            <span>Hibernate</span>
+            <span>Django</span>
+          </div>
+        </div>
+
+        <!-- Database & Tools -->
+        <div class="skill-card">
+          <div class="skill-category-title title-database">Database & Tools</div>
+          <div class="skills-pills">
+            <span>MySQL</span>
+            <span>SQL</span>
+            <span>MongoDB</span>
+            <span>Git & GitHub</span>
+            <span>VS Code</span>
+            <span>Eclipse</span>
+            <span>IntelliJ IDEA</span>
+            <span>Cursor</span>
+            <span>Maven</span>
+          </div>
+        </div>
+
+        <!-- Concepts -->
+        <div class="skill-card">
+          <div class="skill-category-title title-concepts">Concepts</div>
+          <div class="skills-pills">
+            <span>OOPs</span>
+            <span>SDLC</span>
+            <span>Data Preprocessing</span>
+            <span>DSA</span>
+            <span>Machine Learning</span>
+          </div>
+        </div>
+
+        <!-- AI & Productivity Tools -->
+        <div class="skill-card" style="grid-column: 1 / -1;">
+          <div class="skill-category-title title-concepts" style="color: #ec4899;">AI & Productivity Tools</div>
+          <div class="skills-pills">
+            <span>Antigravity</span>
+            <span>Claude</span>
+            <span>GitHub Copilot</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
     <!-- PROJECTS -->
     <section id="projects" class="section" aria-labelledby="projects-heading">
       <div style="text-align: center; margin-bottom: 30px;">
@@ -697,82 +785,6 @@ I can contribute, grow, and make a real impact as a Software Developer.</p>
         </div>
       </div>
     </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section" aria-labelledby="skills-heading">
-      <div style="text-align: center; margin-bottom: 40px; margin-top: 20px;">
-        <h2 class="section-title" id="skills-heading" style="font-size: 36px; margin-bottom: 8px;">Technical Skills</h2>
-        <p style="color: var(--muted);">Technologies I use to build fast, scalable, and modern applications.</p>
-      </div>
-
-      <div class="skills-grid">
-        <!-- Frontend -->
-        <div class="skill-card">
-          <div class="skill-category-title title-frontend">Frontend</div>
-          <div class="skills-pills">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript(ES6)</span>
-            <span>React</span>
-            <span>Redux</span>
-          </div>
-        </div>
-
-        <!-- Backend -->
-        <div class="skill-card">
-          <div class="skill-category-title title-backend">Backend</div>
-          <div class="skills-pills">
-            <span>Java</span>
-            <span>Python</span>
-            <span>JDBC</span>
-            <span>Spring</span>
-            <span>Spring Boot</span>
-            <span>Hibernate</span>
-            <span>Django</span>
-          </div>
-        </div>
-
-        <!-- Database & Tools -->
-        <div class="skill-card">
-          <div class="skill-category-title title-database">Database & Tools</div>
-          <div class="skills-pills">
-            <span>MySQL</span>
-            <span>SQL</span>
-            <span>MongoDB</span>
-            <span>Git & GitHub</span>
-            <span>VS Code</span>
-            <span>Eclipse</span>
-            <span>IntelliJ IDEA</span>
-            <span>Cursor</span>
-            <span>Maven</span>
-          </div>
-        </div>
-
-        <!-- Concepts -->
-        <div class="skill-card">
-          <div class="skill-category-title title-concepts">Concepts</div>
-          <div class="skills-pills">
-            <span>OOPs</span>
-            <span>SDLC</span>
-            <span>Data Preprocessing</span>
-            <span>DSA</span>
-            <span>Machine Learning</span>
-          </div>
-        </div>
-
-        <!-- AI & Productivity Tools -->
-        <div class="skill-card" style="grid-column: 1 / -1;">
-          <div class="skill-category-title title-concepts" style="color: #ec4899;">AI & Productivity Tools</div>
-          <div class="skills-pills">
-            <span>Antigravity</span>
-            <span>Claude</span>
-            <span>GitHub Copilot</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
 
     <!-- CONTACT -->
     <section id="contact" class="section" aria-labelledby="contact-heading">
