@@ -327,6 +327,16 @@
         grid-template-columns: 1fr;
       }
     }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 768px) {
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+    }
     /* TIMELINE EXPERIENCE */
     .timeline {
       position: relative;
@@ -548,98 +558,95 @@ web applications — from secure backends to polished, responsive UIs.</p>
 </section>
 
 
-    <!-- EDUCATION & CERTIFICATIONS -->
+    <!-- EDUCATION -->
     <section id="education" class="section" aria-labelledby="education-heading">
-      <div class="edu-cert-container">
-        
-        <!-- EDUCATION -->
-        <div>
-          <div style="text-align: center; margin-bottom: 30px;">
-            <h2 class="section-title" id="education-heading" style="font-size: 36px; margin-bottom: 8px;">Education</h2>
+      <div style="text-align: center; margin-bottom: 30px;">
+        <h2 class="section-title" id="education-heading" style="font-size: 36px; margin-bottom: 8px;">Education</h2>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-box">
+          <h3>Secondary Education</h3>
+          <p>B J L Public High School, Channapatna, Karnataka, India • 2016 – 2017</p>
+        </div>
+        <div class="edu-box">
+          <h3>Higher Secondary Education</h3>
+          <p>Govt PU College for Girls, Channapatna, Karnataka, India • 2017 – 2020</p>
+        </div>
+        <div class="edu-box">
+          <h3>Bachelor of Computer Application (BCA)</h3>
+          <p>PES College of Science, Commerce and Arts, Mandya, Karnataka, India • 2020 — 2023 | <strong>CGPA: 8.4</strong></p>
+        </div>
+        <div class="edu-box">
+          <h3>Master of Computer Application (MCA)</h3>
+          <p>The National Institute of Engineering, Mysore, Karnataka, India • 2023 — 2025 | <strong>CGPA: 8.3</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="section" aria-labelledby="certifications-heading">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <h2 class="section-title" id="certifications-heading" style="font-size: 36px; margin-bottom: 8px;">Certifications</h2>
+      </div>
+
+      <div style="margin-bottom: 32px;">
+        <div style="margin-bottom: 12px;">
+          <h4 style="color: var(--muted); text-transform: uppercase; font-size: 14px; letter-spacing: 1px;">Technical</h4>
+        </div>
+        <div class="cert-grid">
+          <div class="experience-card">
+            <h3 class="experience-title" style="margin-bottom: 8px; color: #c084fc;"><i class="fab fa-docker" style="margin-right: 8px;"></i>Getting Started with Docker</h3>
+            <div class="experience-meta" style="margin-bottom: 12px;">Simplilearn · August 2026
+              <div style="font-size: 13px; margin-top: 4px;">Credential ID: 10636329</div>
+            </div>
+            <a href="https://simpli-web.app.link/e/a6YIIAQHO5b" target="_blank" class="contact-btn" style="padding: 6px 12px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
           </div>
-          <div class="edu-grid" style="grid-template-columns: 1fr; gap: 32px;">
-            <div class="edu-box">
-              <h3>Secondary Education</h3>
-              <p>B J L Public High School, Channapatna, Karnataka, India • 2016 – 2017</p>
+          
+          <div class="experience-card">
+            <h3 class="experience-title" style="margin-bottom: 8px; color: #c084fc;"><i class="fas fa-code" style="margin-right: 8px;"></i>Full Stack Development</h3>
+            <div class="experience-meta" style="margin-bottom: 12px;">KodNest Technologies · June 2026
+              <div style="font-size: 13px; margin-top: 4px;">Credential ID: 109f3f4f-c360-482e-a046-dd4468647f45</div>
             </div>
-            <div class="edu-box">
-              <h3>Higher Secondary Education</h3>
-              <p>Govt PU College for Girls, Channapatna, Karnataka, India • 2017 – 2020</p>
+            <a href="https://production-resume-builder.s3.ap-south-1.amazonaws.com/certificates/KOD1NF63V-Sushravya%20B%20C/certificate.pdf" target="_blank" class="contact-btn" style="padding: 6px 12px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+          </div>
+          
+          <div class="experience-card">
+            <h3 class="experience-title" style="margin-bottom: 8px; color: #c084fc;"><i class="fas fa-shield-alt" style="margin-right: 8px;"></i>Foundations of Cybersecurity</h3>
+            <div class="experience-meta" style="margin-bottom: 12px;">Google | Coursera · November 2024
+              <div style="font-size: 13px; margin-top: 4px;">Credential ID: O48XKA0ATWO7</div>
             </div>
-            <div class="edu-box">
-              <h3>Bachelor of Computer Application (BCA)</h3>
-              <p>PES College of Science, Commerce and Arts, Mandya, Karnataka, India • 2020 — 2023 | <strong>CGPA: 8.4</strong></p>
+            <a href="https://www.coursera.org/account/accomplishments/verify/O48XKA0ATWO7" target="_blank" class="contact-btn" style="padding: 6px 12px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+          </div>
+          
+          <div class="experience-card">
+            <h3 class="experience-title" style="margin-bottom: 8px; color: #c084fc;"><i class="fas fa-coffee" style="margin-right: 8px;"></i>Introduction to Programming Using Java</h3>
+            <div class="experience-meta" style="margin-bottom: 12px;">LearnQuest | Coursera · November 2024
+              <div style="font-size: 13px; margin-top: 4px;">Credential ID: 6CZL10MAM5RW</div>
             </div>
-            <div class="edu-box">
-              <h3>Master of Computer Application (MCA)</h3>
-              <p>The National Institute of Engineering, Mysore, Karnataka, India • 2023 — 2025 | <strong>CGPA: 8.3</strong></p>
-            </div>
+            <a href="https://www.coursera.org/account/accomplishments/verify/6CZL10MAM5RW" target="_blank" class="contact-btn" style="padding: 6px 12px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
           </div>
         </div>
+      </div>
 
-        <!-- CERTIFICATIONS -->
-        <div id="certifications">
-          <div style="text-align: center; margin-bottom: 30px;">
-            <h2 class="section-title" id="certifications-heading" style="font-size: 36px; margin-bottom: 8px;">Certifications</h2>
+      <div>
+        <div style="margin-bottom: 12px;">
+          <h4 style="color: var(--muted); text-transform: uppercase; font-size: 14px; letter-spacing: 1px;">Problem Solving</h4>
+        </div>
+        <div class="cert-grid">
+          <div class="experience-card">
+            <h3 class="experience-title" style="margin-bottom: 8px; color: #c084fc;"><i class="fas fa-lightbulb" style="margin-right: 8px;"></i>Design Thinking: A Primer</h3>
+            <div class="experience-meta" style="margin-bottom: 12px;">NPTEL (IIT Madras) · February 2025
+              <div style="font-size: 13px; margin-top: 4px;">Score: 86% | Elite | Top 2%</div>
+            </div>
+            <a href="https://archive.nptel.ac.in/content/noc/NOC25/SEM1/Ecertificates/110/noc25-mg18/Course/NPTEL25MG18S53740018401204105.pdf" target="_blank" class="contact-btn" style="padding: 6px 12px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
           </div>
-          <div class="projects-grid" style="gap: 16px; margin-bottom: 32px;">
-            <div style="margin-bottom: 4px;">
-              <h4 style="color: var(--muted); text-transform: uppercase; font-size: 14px; letter-spacing: 1px; margin-bottom: 12px;">Technical</h4>
+          
+          <div class="experience-card">
+            <h3 class="experience-title" style="margin-bottom: 8px; color: #c084fc;"><i class="fas fa-puzzle-piece" style="margin-right: 8px;"></i>Creative and Critical Thinking</h3>
+            <div class="experience-meta" style="margin-bottom: 12px;">IBM | Coursera · July 2024
+              <div style="font-size: 13px; margin-top: 4px;">Credential ID: 3ALFKGP6NXSB</div>
             </div>
-            
-            <div class="experience-card">
-              <h3 class="experience-title" style="margin-bottom: 8px; color: #c084fc;"><i class="fab fa-docker" style="margin-right: 8px;"></i>Getting Started with Docker</h3>
-              <div class="experience-meta" style="margin-bottom: 12px;">Simplilearn · August 2026
-                <div style="font-size: 13px; margin-top: 4px;">Credential ID: 10636329</div>
-              </div>
-              <a href="https://simpli-web.app.link/e/a6YIIAQHO5b" target="_blank" class="contact-btn" style="padding: 6px 12px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
-            </div>
-            
-            <div class="experience-card">
-              <h3 class="experience-title" style="margin-bottom: 8px; color: #c084fc;"><i class="fas fa-code" style="margin-right: 8px;"></i>Full Stack Development</h3>
-              <div class="experience-meta" style="margin-bottom: 12px;">KodNest Technologies · June 2026
-                <div style="font-size: 13px; margin-top: 4px;">Credential ID: 109f3f4f-c360-482e-a046-dd4468647f45</div>
-              </div>
-              <a href="https://production-resume-builder.s3.ap-south-1.amazonaws.com/certificates/KOD1NF63V-Sushravya%20B%20C/certificate.pdf" target="_blank" class="contact-btn" style="padding: 6px 12px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
-            </div>
-            
-            <div class="experience-card">
-              <h3 class="experience-title" style="margin-bottom: 8px; color: #c084fc;"><i class="fas fa-shield-alt" style="margin-right: 8px;"></i>Foundations of Cybersecurity</h3>
-              <div class="experience-meta" style="margin-bottom: 12px;">Google | Coursera · November 2024
-                <div style="font-size: 13px; margin-top: 4px;">Credential ID: O48XKA0ATWO7</div>
-              </div>
-              <a href="https://www.coursera.org/account/accomplishments/verify/O48XKA0ATWO7" target="_blank" class="contact-btn" style="padding: 6px 12px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
-            </div>
-            
-            <div class="experience-card">
-              <h3 class="experience-title" style="margin-bottom: 8px; color: #c084fc;"><i class="fas fa-coffee" style="margin-right: 8px;"></i>Introduction to Programming Using Java</h3>
-              <div class="experience-meta" style="margin-bottom: 12px;">LearnQuest | Coursera · November 2024
-                <div style="font-size: 13px; margin-top: 4px;">Credential ID: 6CZL10MAM5RW</div>
-              </div>
-              <a href="https://www.coursera.org/account/accomplishments/verify/6CZL10MAM5RW" target="_blank" class="contact-btn" style="padding: 6px 12px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
-            </div>
-          </div>
-
-          <div class="projects-grid" style="gap: 16px;">
-            <div style="margin-bottom: 4px;">
-              <h4 style="color: var(--muted); text-transform: uppercase; font-size: 14px; letter-spacing: 1px; margin-bottom: 12px;">Problem Solving</h4>
-            </div>
-            
-            <div class="experience-card">
-              <h3 class="experience-title" style="margin-bottom: 8px; color: #c084fc;"><i class="fas fa-lightbulb" style="margin-right: 8px;"></i>Design Thinking: A Primer</h3>
-              <div class="experience-meta" style="margin-bottom: 12px;">NPTEL (IIT Madras) · February 2025
-                <div style="font-size: 13px; margin-top: 4px;">Score: 86% | Elite | Top 2%</div>
-              </div>
-              <a href="https://archive.nptel.ac.in/content/noc/NOC25/SEM1/Ecertificates/110/noc25-mg18/Course/NPTEL25MG18S53740018401204105.pdf" target="_blank" class="contact-btn" style="padding: 6px 12px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
-            </div>
-            
-            <div class="experience-card">
-              <h3 class="experience-title" style="margin-bottom: 8px; color: #c084fc;"><i class="fas fa-puzzle-piece" style="margin-right: 8px;"></i>Creative and Critical Thinking</h3>
-              <div class="experience-meta" style="margin-bottom: 12px;">IBM | Coursera · July 2024
-                <div style="font-size: 13px; margin-top: 4px;">Credential ID: 3ALFKGP6NXSB</div>
-              </div>
-              <a href="https://www.coursera.org/account/accomplishments/verify/3ALFKGP6NXSB" target="_blank" class="contact-btn" style="padding: 6px 12px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
-            </div>
+            <a href="https://www.coursera.org/account/accomplishments/verify/3ALFKGP6NXSB" target="_blank" class="contact-btn" style="padding: 6px 12px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
           </div>
         </div>
       </div>
